@@ -1,0 +1,19 @@
+@import './color.less';
+.light-shadow {
+  background: @light-bg;
+  box-shadow:  12px 12px 35px @light-shadow-left, 
+             -12px -12px 35px @light-shadow-right;
+}
+.theme-light () {
+  .show {
+    background: @light-bg;
+    color: @light-color;
+  }
+  code {
+    .light-shadow;
+  }
+  blockquote {
+    border-left: 5px solid rgb(12, 99, 121);
+    .light-shadow;
+  }
+}

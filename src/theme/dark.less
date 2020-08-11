@@ -1,0 +1,19 @@
+@import './color.less';
+.base-shadow {
+  background: @dark-bg;
+  box-shadow: 10px 10px 20px @dark-shadow-left,
+    -10px -10px 20px @dark-shadow-right;
+}
+.theme-dark () {
+  .show {
+    background: @dark-bg;
+    color: @dark-color;
+  }
+  code {
+    .base-shadow;
+  }
+  blockquote {
+    border-left: 5px solid rgb(12, 99, 121);
+    .base-shadow;
+  }
+}

@@ -1,14 +1,22 @@
 {
-  "name": "vue-md-editor",
+  "name": "vue-qn-md-editor",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
+  "author": "lyttonlee",
+  "email": "lzr3278@163.com",
+  "index": "dist/md-editor.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build-package": "vue-cli-service build --target wc --name md-editor src/App.vue"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "highlight.js": "^10.1.2",
+    "marked": "^1.1.1",
+    "qiniu-js": "^3.1.1",
+    "random-string": "^0.2.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {
