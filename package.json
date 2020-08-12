@@ -1,6 +1,6 @@
 {
   "name": "vue-qn-md-editor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": "lyttonlee",
   "email": "lzr3278@163.com",
@@ -10,7 +10,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "build-package": "vue-cli-service build --target wc --name md-editor src/App.vue",
+    "wc-package": "vue-cli-service build --target wc --name md-editor src/App.vue",
     "lib-package": "vue-cli-service build --target lib --name mdEditor"
   },
   "dependencies": {
