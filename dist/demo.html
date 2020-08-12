@@ -1,8 +1,17 @@
 <meta charset="utf-8">
-<title>md-editor demo</title>
+<title>mdEditor demo</title>
 <script src="https://unpkg.com/vue"></script>
-<script src="./md-editor.js"></script>
+<script src="./mdEditor.umd.js"></script>
 
 
-<md-editor></md-editor>
+<div id="app">
+  <demo></demo>
+</div>
 
+<script>
+new Vue({
+  components: {
+    demo: mdEditor
+  }
+}).$mount('#app')
+</script>

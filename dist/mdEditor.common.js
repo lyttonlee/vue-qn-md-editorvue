@@ -1,3 +1,4 @@
+module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -81,7 +82,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "5a74");
+/******/ 	return __webpack_require__(__webpack_require__.s = "fb15");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -768,23 +769,6 @@ function openscad(hljs) {
 
 module.exports = openscad;
 
-
-/***/ }),
-
-/***/ "02cd":
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__("4085");
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add CSS to Shadow Root
-var add = __webpack_require__("35d6").default
-module.exports.__inject__ = function (shadowRoot) {
-  add("2abef906", content, shadowRoot)
-};
 
 /***/ }),
 
@@ -6664,11 +6648,9 @@ module.exports = less;
 var content = __webpack_require__("c04d");
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
-// add CSS to Shadow Root
-var add = __webpack_require__("35d6").default
-module.exports.__inject__ = function (shadowRoot) {
-  add("a788cc84", content, shadowRoot)
-};
+// add the styles to the DOM
+var add = __webpack_require__("499e").default
+var update = add("a788cc84", content, true, {"sourceMap":false,"shadowMode":false});
 
 /***/ }),
 
@@ -10529,120 +10511,6 @@ module.exports = gherkin;
 
 /***/ }),
 
-/***/ "35d6":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "default", function() { return /* binding */ addStylesToShadowDOM; });
-
-// CONCATENATED MODULE: ./node_modules/vue-style-loader/lib/listToStyles.js
-/**
- * Translates the list format produced by css-loader into something
- * easier to manipulate.
- */
-function listToStyles (parentId, list) {
-  var styles = []
-  var newStyles = {}
-  for (var i = 0; i < list.length; i++) {
-    var item = list[i]
-    var id = item[0]
-    var css = item[1]
-    var media = item[2]
-    var sourceMap = item[3]
-    var part = {
-      id: parentId + ':' + i,
-      css: css,
-      media: media,
-      sourceMap: sourceMap
-    }
-    if (!newStyles[id]) {
-      styles.push(newStyles[id] = { id: id, parts: [part] })
-    } else {
-      newStyles[id].parts.push(part)
-    }
-  }
-  return styles
-}
-
-// CONCATENATED MODULE: ./node_modules/vue-style-loader/lib/addStylesShadow.js
-
-
-function addStylesToShadowDOM (parentId, list, shadowRoot) {
-  var styles = listToStyles(parentId, list)
-  addStyles(styles, shadowRoot)
-}
-
-/*
-type StyleObject = {
-  id: number;
-  parts: Array<StyleObjectPart>
-}
-
-type StyleObjectPart = {
-  css: string;
-  media: string;
-  sourceMap: ?string
-}
-*/
-
-function addStyles (styles /* Array<StyleObject> */, shadowRoot) {
-  const injectedStyles =
-    shadowRoot._injectedStyles ||
-    (shadowRoot._injectedStyles = {})
-  for (var i = 0; i < styles.length; i++) {
-    var item = styles[i]
-    var style = injectedStyles[item.id]
-    if (!style) {
-      for (var j = 0; j < item.parts.length; j++) {
-        addStyle(item.parts[j], shadowRoot)
-      }
-      injectedStyles[item.id] = true
-    }
-  }
-}
-
-function createStyleElement (shadowRoot) {
-  var styleElement = document.createElement('style')
-  styleElement.type = 'text/css'
-  shadowRoot.appendChild(styleElement)
-  return styleElement
-}
-
-function addStyle (obj /* StyleObjectPart */, shadowRoot) {
-  var styleElement = createStyleElement(shadowRoot)
-  var css = obj.css
-  var media = obj.media
-  var sourceMap = obj.sourceMap
-
-  if (media) {
-    styleElement.setAttribute('media', media)
-  }
-
-  if (sourceMap) {
-    // https://developer.chrome.com/devtools/docs/javascript-debugging
-    // this makes source maps inside style tags work properly in Chrome
-    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
-    // http://stackoverflow.com/a/26603875
-    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
-  }
-
-  if (styleElement.styleSheet) {
-    styleElement.styleSheet.cssText = css
-  } else {
-    while (styleElement.firstChild) {
-      styleElement.removeChild(styleElement.firstChild)
-    }
-    styleElement.appendChild(document.createTextNode(css))
-  }
-}
-
-
-/***/ }),
-
 /***/ "3728":
 /***/ (function(module, exports) {
 
@@ -11392,20 +11260,6 @@ function haskell(hljs) {
 }
 
 module.exports = haskell;
-
-
-/***/ }),
-
-/***/ "4085":
-/***/ (function(module, exports, __webpack_require__) {
-
-// Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__("24fb");
-exports = ___CSS_LOADER_API_IMPORT___(false);
-// Module
-exports.push([module.i, "blockquote,code,img,p{margin:10px 0}img{width:100%}.show{font-size:1rem}code{display:block;width:100%;padding:10px;box-sizing:border-box;font-size:1.1rem;font-weight:500;border-radius:10px}@media screen and (max-width:750px){code{font-size:.9rem;font-weight:300;border-radius:5px}}blockquote{width:100%;padding:5px;box-sizing:border-box}table{padding:10px 0;width:100%;border-spacing:0}table th{border:1px solid silver}table td,table th{padding:5px 0;box-sizing:border-box}table td{border:.5px solid silver;border-top:none}.base-shadow{background:#303131;box-shadow:10px 10px 20px #252626,-10px -10px 20px #3b3c3c}.light-shadow{background:#fff;box-shadow:12px 12px 35px #c9c9c9,-12px -12px 35px #fff}.dark .show{background:#303131;color:#b3b3b3}.dark blockquote,.dark code{background:#303131;box-shadow:10px 10px 20px #252626,-10px -10px 20px #3b3c3c}.dark blockquote{border-left:5px solid #0c6379}.light .show{background:#fff;color:#2b2b2b}.light blockquote,.light code{background:#fff;box-shadow:12px 12px 35px #c9c9c9,-12px -12px 35px #fff}.light blockquote{border-left:5px solid #0c6379}*{margin:0;padding:0}#editor{font-family:Avenir,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;display:flex}#editor .show{width:100%;max-width:1024px;max-height:100vh;overflow-y:auto;padding:10px;box-sizing:border-box}", ""]);
-// Exports
-module.exports = exports;
 
 
 /***/ }),
@@ -12183,6 +12037,272 @@ function diff(hljs) {
 }
 
 module.exports = diff;
+
+
+/***/ }),
+
+/***/ "499e":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "default", function() { return /* binding */ addStylesClient; });
+
+// CONCATENATED MODULE: ./node_modules/vue-style-loader/lib/listToStyles.js
+/**
+ * Translates the list format produced by css-loader into something
+ * easier to manipulate.
+ */
+function listToStyles (parentId, list) {
+  var styles = []
+  var newStyles = {}
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i]
+    var id = item[0]
+    var css = item[1]
+    var media = item[2]
+    var sourceMap = item[3]
+    var part = {
+      id: parentId + ':' + i,
+      css: css,
+      media: media,
+      sourceMap: sourceMap
+    }
+    if (!newStyles[id]) {
+      styles.push(newStyles[id] = { id: id, parts: [part] })
+    } else {
+      newStyles[id].parts.push(part)
+    }
+  }
+  return styles
+}
+
+// CONCATENATED MODULE: ./node_modules/vue-style-loader/lib/addStylesClient.js
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+  Modified by Evan You @yyx990803
+*/
+
+
+
+var hasDocument = typeof document !== 'undefined'
+
+if (typeof DEBUG !== 'undefined' && DEBUG) {
+  if (!hasDocument) {
+    throw new Error(
+    'vue-style-loader cannot be used in a non-browser environment. ' +
+    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
+  ) }
+}
+
+/*
+type StyleObject = {
+  id: number;
+  parts: Array<StyleObjectPart>
+}
+
+type StyleObjectPart = {
+  css: string;
+  media: string;
+  sourceMap: ?string
+}
+*/
+
+var stylesInDom = {/*
+  [id: number]: {
+    id: number,
+    refs: number,
+    parts: Array<(obj?: StyleObjectPart) => void>
+  }
+*/}
+
+var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
+var singletonElement = null
+var singletonCounter = 0
+var isProduction = false
+var noop = function () {}
+var options = null
+var ssrIdKey = 'data-vue-ssr-id'
+
+// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+// tags it will allow on a page
+var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
+
+function addStylesClient (parentId, list, _isProduction, _options) {
+  isProduction = _isProduction
+
+  options = _options || {}
+
+  var styles = listToStyles(parentId, list)
+  addStylesToDom(styles)
+
+  return function update (newList) {
+    var mayRemove = []
+    for (var i = 0; i < styles.length; i++) {
+      var item = styles[i]
+      var domStyle = stylesInDom[item.id]
+      domStyle.refs--
+      mayRemove.push(domStyle)
+    }
+    if (newList) {
+      styles = listToStyles(parentId, newList)
+      addStylesToDom(styles)
+    } else {
+      styles = []
+    }
+    for (var i = 0; i < mayRemove.length; i++) {
+      var domStyle = mayRemove[i]
+      if (domStyle.refs === 0) {
+        for (var j = 0; j < domStyle.parts.length; j++) {
+          domStyle.parts[j]()
+        }
+        delete stylesInDom[domStyle.id]
+      }
+    }
+  }
+}
+
+function addStylesToDom (styles /* Array<StyleObject> */) {
+  for (var i = 0; i < styles.length; i++) {
+    var item = styles[i]
+    var domStyle = stylesInDom[item.id]
+    if (domStyle) {
+      domStyle.refs++
+      for (var j = 0; j < domStyle.parts.length; j++) {
+        domStyle.parts[j](item.parts[j])
+      }
+      for (; j < item.parts.length; j++) {
+        domStyle.parts.push(addStyle(item.parts[j]))
+      }
+      if (domStyle.parts.length > item.parts.length) {
+        domStyle.parts.length = item.parts.length
+      }
+    } else {
+      var parts = []
+      for (var j = 0; j < item.parts.length; j++) {
+        parts.push(addStyle(item.parts[j]))
+      }
+      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
+    }
+  }
+}
+
+function createStyleElement () {
+  var styleElement = document.createElement('style')
+  styleElement.type = 'text/css'
+  head.appendChild(styleElement)
+  return styleElement
+}
+
+function addStyle (obj /* StyleObjectPart */) {
+  var update, remove
+  var styleElement = document.querySelector('style[' + ssrIdKey + '~="' + obj.id + '"]')
+
+  if (styleElement) {
+    if (isProduction) {
+      // has SSR styles and in production mode.
+      // simply do nothing.
+      return noop
+    } else {
+      // has SSR styles but in dev mode.
+      // for some reason Chrome can't handle source map in server-rendered
+      // style tags - source maps in <style> only works if the style tag is
+      // created and inserted dynamically. So we remove the server rendered
+      // styles and inject new ones.
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  if (isOldIE) {
+    // use singleton mode for IE9.
+    var styleIndex = singletonCounter++
+    styleElement = singletonElement || (singletonElement = createStyleElement())
+    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
+    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
+  } else {
+    // use multi-style-tag mode in all other cases
+    styleElement = createStyleElement()
+    update = applyToTag.bind(null, styleElement)
+    remove = function () {
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  update(obj)
+
+  return function updateStyle (newObj /* StyleObjectPart */) {
+    if (newObj) {
+      if (newObj.css === obj.css &&
+          newObj.media === obj.media &&
+          newObj.sourceMap === obj.sourceMap) {
+        return
+      }
+      update(obj = newObj)
+    } else {
+      remove()
+    }
+  }
+}
+
+var replaceText = (function () {
+  var textStore = []
+
+  return function (index, replacement) {
+    textStore[index] = replacement
+    return textStore.filter(Boolean).join('\n')
+  }
+})()
+
+function applyToSingletonTag (styleElement, index, remove, obj) {
+  var css = remove ? '' : obj.css
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = replaceText(index, css)
+  } else {
+    var cssNode = document.createTextNode(css)
+    var childNodes = styleElement.childNodes
+    if (childNodes[index]) styleElement.removeChild(childNodes[index])
+    if (childNodes.length) {
+      styleElement.insertBefore(cssNode, childNodes[index])
+    } else {
+      styleElement.appendChild(cssNode)
+    }
+  }
+}
+
+function applyToTag (styleElement, obj) {
+  var css = obj.css
+  var media = obj.media
+  var sourceMap = obj.sourceMap
+
+  if (media) {
+    styleElement.setAttribute('media', media)
+  }
+  if (options.ssrId) {
+    styleElement.setAttribute(ssrIdKey, obj.id)
+  }
+
+  if (sourceMap) {
+    // https://developer.chrome.com/devtools/docs/javascript-debugging
+    // this makes source maps inside style tags work properly in Chrome
+    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
+    // http://stackoverflow.com/a/26603875
+    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
+  }
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = css
+  } else {
+    while (styleElement.firstChild) {
+      styleElement.removeChild(styleElement.firstChild)
+    }
+    styleElement.appendChild(document.createTextNode(css))
+  }
+}
 
 
 /***/ }),
@@ -13563,2529 +13683,6 @@ function vbscript(hljs) {
 
 module.exports = vbscript;
 
-
-/***/ }),
-
-/***/ "5a74":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
-// This file is imported into lib/wc client bundles.
-
-if (typeof window !== 'undefined') {
-  var currentScript = window.document.currentScript
-  if (Object({"NODE_ENV":"production","BASE_URL":"/"}).NEED_CURRENTSCRIPT_POLYFILL) {
-    var getCurrentScript = __webpack_require__("8875")
-    currentScript = getCurrentScript()
-
-    // for backward compatibility, because previously we directly included the polyfill
-    if (!('currentScript' in document)) {
-      Object.defineProperty(document, 'currentScript', { get: getCurrentScript })
-    }
-  }
-
-  var src = currentScript && currentScript.src.match(/(.+\/)[^/]+\.js(\?.*)?$/)
-  if (src) {
-    __webpack_require__.p = src[1] // eslint-disable-line
-  }
-}
-
-// Indicate to webpack that this file can be concatenated
-/* harmony default export */ var setPublicPath = (null);
-
-// EXTERNAL MODULE: external "Vue"
-var external_Vue_ = __webpack_require__("8bbf");
-var external_Vue_default = /*#__PURE__*/__webpack_require__.n(external_Vue_);
-
-// CONCATENATED MODULE: ./node_modules/@vue/web-component-wrapper/dist/vue-wc-wrapper.js
-const camelizeRE = /-(\w)/g;
-const camelize = str => {
-  return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : '')
-};
-
-const hyphenateRE = /\B([A-Z])/g;
-const hyphenate = str => {
-  return str.replace(hyphenateRE, '-$1').toLowerCase()
-};
-
-function getInitialProps (propsList) {
-  const res = {};
-  propsList.forEach(key => {
-    res[key] = undefined;
-  });
-  return res
-}
-
-function injectHook (options, key, hook) {
-  options[key] = [].concat(options[key] || []);
-  options[key].unshift(hook);
-}
-
-function callHooks (vm, hook) {
-  if (vm) {
-    const hooks = vm.$options[hook] || [];
-    hooks.forEach(hook => {
-      hook.call(vm);
-    });
-  }
-}
-
-function createCustomEvent (name, args) {
-  return new CustomEvent(name, {
-    bubbles: false,
-    cancelable: false,
-    detail: args
-  })
-}
-
-const isBoolean = val => /function Boolean/.test(String(val));
-const isNumber = val => /function Number/.test(String(val));
-
-function convertAttributeValue (value, name, { type } = {}) {
-  if (isBoolean(type)) {
-    if (value === 'true' || value === 'false') {
-      return value === 'true'
-    }
-    if (value === '' || value === name) {
-      return true
-    }
-    return value != null
-  } else if (isNumber(type)) {
-    const parsed = parseFloat(value, 10);
-    return isNaN(parsed) ? value : parsed
-  } else {
-    return value
-  }
-}
-
-function toVNodes (h, children) {
-  const res = [];
-  for (let i = 0, l = children.length; i < l; i++) {
-    res.push(toVNode(h, children[i]));
-  }
-  return res
-}
-
-function toVNode (h, node) {
-  if (node.nodeType === 3) {
-    return node.data.trim() ? node.data : null
-  } else if (node.nodeType === 1) {
-    const data = {
-      attrs: getAttributes(node),
-      domProps: {
-        innerHTML: node.innerHTML
-      }
-    };
-    if (data.attrs.slot) {
-      data.slot = data.attrs.slot;
-      delete data.attrs.slot;
-    }
-    return h(node.tagName, data)
-  } else {
-    return null
-  }
-}
-
-function getAttributes (node) {
-  const res = {};
-  for (let i = 0, l = node.attributes.length; i < l; i++) {
-    const attr = node.attributes[i];
-    res[attr.nodeName] = attr.nodeValue;
-  }
-  return res
-}
-
-function wrap (Vue, Component) {
-  const isAsync = typeof Component === 'function' && !Component.cid;
-  let isInitialized = false;
-  let hyphenatedPropsList;
-  let camelizedPropsList;
-  let camelizedPropsMap;
-
-  function initialize (Component) {
-    if (isInitialized) return
-
-    const options = typeof Component === 'function'
-      ? Component.options
-      : Component;
-
-    // extract props info
-    const propsList = Array.isArray(options.props)
-      ? options.props
-      : Object.keys(options.props || {});
-    hyphenatedPropsList = propsList.map(hyphenate);
-    camelizedPropsList = propsList.map(camelize);
-    const originalPropsAsObject = Array.isArray(options.props) ? {} : options.props || {};
-    camelizedPropsMap = camelizedPropsList.reduce((map, key, i) => {
-      map[key] = originalPropsAsObject[propsList[i]];
-      return map
-    }, {});
-
-    // proxy $emit to native DOM events
-    injectHook(options, 'beforeCreate', function () {
-      const emit = this.$emit;
-      this.$emit = (name, ...args) => {
-        this.$root.$options.customElement.dispatchEvent(createCustomEvent(name, args));
-        return emit.call(this, name, ...args)
-      };
-    });
-
-    injectHook(options, 'created', function () {
-      // sync default props values to wrapper on created
-      camelizedPropsList.forEach(key => {
-        this.$root.props[key] = this[key];
-      });
-    });
-
-    // proxy props as Element properties
-    camelizedPropsList.forEach(key => {
-      Object.defineProperty(CustomElement.prototype, key, {
-        get () {
-          return this._wrapper.props[key]
-        },
-        set (newVal) {
-          this._wrapper.props[key] = newVal;
-        },
-        enumerable: false,
-        configurable: true
-      });
-    });
-
-    isInitialized = true;
-  }
-
-  function syncAttribute (el, key) {
-    const camelized = camelize(key);
-    const value = el.hasAttribute(key) ? el.getAttribute(key) : undefined;
-    el._wrapper.props[camelized] = convertAttributeValue(
-      value,
-      key,
-      camelizedPropsMap[camelized]
-    );
-  }
-
-  class CustomElement extends HTMLElement {
-    constructor () {
-      super();
-      this.attachShadow({ mode: 'open' });
-
-      const wrapper = this._wrapper = new Vue({
-        name: 'shadow-root',
-        customElement: this,
-        shadowRoot: this.shadowRoot,
-        data () {
-          return {
-            props: {},
-            slotChildren: []
-          }
-        },
-        render (h) {
-          return h(Component, {
-            ref: 'inner',
-            props: this.props
-          }, this.slotChildren)
-        }
-      });
-
-      // Use MutationObserver to react to future attribute & slot content change
-      const observer = new MutationObserver(mutations => {
-        let hasChildrenChange = false;
-        for (let i = 0; i < mutations.length; i++) {
-          const m = mutations[i];
-          if (isInitialized && m.type === 'attributes' && m.target === this) {
-            syncAttribute(this, m.attributeName);
-          } else {
-            hasChildrenChange = true;
-          }
-        }
-        if (hasChildrenChange) {
-          wrapper.slotChildren = Object.freeze(toVNodes(
-            wrapper.$createElement,
-            this.childNodes
-          ));
-        }
-      });
-      observer.observe(this, {
-        childList: true,
-        subtree: true,
-        characterData: true,
-        attributes: true
-      });
-    }
-
-    get vueComponent () {
-      return this._wrapper.$refs.inner
-    }
-
-    connectedCallback () {
-      const wrapper = this._wrapper;
-      if (!wrapper._isMounted) {
-        // initialize attributes
-        const syncInitialAttributes = () => {
-          wrapper.props = getInitialProps(camelizedPropsList);
-          hyphenatedPropsList.forEach(key => {
-            syncAttribute(this, key);
-          });
-        };
-
-        if (isInitialized) {
-          syncInitialAttributes();
-        } else {
-          // async & unresolved
-          Component().then(resolved => {
-            if (resolved.__esModule || resolved[Symbol.toStringTag] === 'Module') {
-              resolved = resolved.default;
-            }
-            initialize(resolved);
-            syncInitialAttributes();
-          });
-        }
-        // initialize children
-        wrapper.slotChildren = Object.freeze(toVNodes(
-          wrapper.$createElement,
-          this.childNodes
-        ));
-        wrapper.$mount();
-        this.shadowRoot.appendChild(wrapper.$el);
-      } else {
-        callHooks(this.vueComponent, 'activated');
-      }
-    }
-
-    disconnectedCallback () {
-      callHooks(this.vueComponent, 'deactivated');
-    }
-  }
-
-  if (!isAsync) {
-    initialize(Component);
-  }
-
-  return CustomElement
-}
-
-/* harmony default export */ var vue_wc_wrapper = (wrap);
-
-// EXTERNAL MODULE: ./node_modules/css-loader/dist/runtime/api.js
-var api = __webpack_require__("24fb");
-
-// EXTERNAL MODULE: ./node_modules/vue-style-loader/lib/addStylesShadow.js + 1 modules
-var addStylesShadow = __webpack_require__("35d6");
-
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () {
-        injectStyles.call(
-          this,
-          (options.functional ? this.parent : this).$root.$options.shadowRoot
-        )
-      }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functional component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"d8f0d1e0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=39e79c05&shadow
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.theme,attrs:{"id":"editor"}},[_c('Editor',{ref:"myqiniuEditorOldDeepComponent",attrs:{"customStyle":_vm.customStyle,"domain":_vm.domain},on:{"getToken":_vm.getToken},model:{value:(_vm.htmlInfo),callback:function ($$v) {_vm.htmlInfo=$$v},expression:"htmlInfo"}}),_c('div',{staticClass:"show",style:(_vm.customStyle),domProps:{"innerHTML":_vm._s(_vm.htmlInfo)}})],1)}
-var staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=39e79c05&shadow
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"d8f0d1e0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Editor.vue?vue&type=template&id=89218b56&scoped=true&
-var Editorvue_type_template_id_89218b56_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"editor-content"},[_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.info),expression:"info"}],ref:"textarea",staticClass:"area",style:(_vm.customStyle),attrs:{"autofocus":"","placeholder":"使用markdown语法编辑内容"},domProps:{"value":(_vm.info)},on:{"keyup":_vm.changeInfo,"change":_vm.changeInfo,"drop":function($event){$event.preventDefault();return _vm.dragFile($event)},"input":function($event){if($event.target.composing){ return; }_vm.info=$event.target.value}}})])}
-var Editorvue_type_template_id_89218b56_scoped_true_staticRenderFns = []
-
-
-// CONCATENATED MODULE: ./src/components/Editor.vue?vue&type=template&id=89218b56&scoped=true&
-
-// EXTERNAL MODULE: ./node_modules/marked/lib/marked.js
-var marked = __webpack_require__("0e54");
-var marked_default = /*#__PURE__*/__webpack_require__.n(marked);
-
-// EXTERNAL MODULE: ./node_modules/highlight.js/lib/index.js
-var lib = __webpack_require__("1487");
-var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
-
-// EXTERNAL MODULE: ./node_modules/spark-md5/spark-md5.js
-var spark_md5 = __webpack_require__("69a0");
-var spark_md5_default = /*#__PURE__*/__webpack_require__.n(spark_md5);
-
-// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/base64.js
-/* eslint-disable */
-function utf8Encode(argString) {
-    // http://kevin.vanzonneveld.net
-    // +   original by: Webtoolkit.info (http://www.webtoolkit.info/)
-    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-    // +   improved by: sowberry
-    // +    tweaked by: Jack
-    // +   bugfixed by: Onno Marsman
-    // +   improved by: Yves Sucaet
-    // +   bugfixed by: Onno Marsman
-    // +   bugfixed by: Ulrich
-    // +   bugfixed by: Rafal Kukawski
-    // +   improved by: kirilloid
-    // +   bugfixed by: kirilloid
-    // *     example 1: this.utf8Encode('Kevin van Zonneveld')
-    // *     returns 1: 'Kevin van Zonneveld'
-    if (argString === null || typeof argString === 'undefined') {
-        return '';
-    }
-    var string = argString + ''; // .replace(/\r\n/g, '\n').replace(/\r/g, '\n')
-    var utftext = '', start, end, stringl = 0;
-    start = end = 0;
-    stringl = string.length;
-    for (var n = 0; n < stringl; n++) {
-        var c1 = string.charCodeAt(n);
-        var enc = null;
-        if (c1 < 128) {
-            end++;
-        }
-        else if (c1 > 127 && c1 < 2048) {
-            enc = String.fromCharCode((c1 >> 6) | 192, (c1 & 63) | 128);
-        }
-        else if ((c1 & 0xf800 ^ 0xd800) > 0) {
-            enc = String.fromCharCode((c1 >> 12) | 224, ((c1 >> 6) & 63) | 128, (c1 & 63) | 128);
-        }
-        else {
-            // surrogate pairs
-            if ((c1 & 0xfc00 ^ 0xd800) > 0) {
-                throw new RangeError('Unmatched trail surrogate at ' + n);
-            }
-            var c2 = string.charCodeAt(++n);
-            if ((c2 & 0xfc00 ^ 0xdc00) > 0) {
-                throw new RangeError('Unmatched lead surrogate at ' + (n - 1));
-            }
-            c1 = ((c1 & 0x3ff) << 10) + (c2 & 0x3ff) + 0x10000;
-            enc = String.fromCharCode((c1 >> 18) | 240, ((c1 >> 12) & 63) | 128, ((c1 >> 6) & 63) | 128, (c1 & 63) | 128);
-        }
-        if (enc !== null) {
-            if (end > start) {
-                utftext += string.slice(start, end);
-            }
-            utftext += enc;
-            start = end = n + 1;
-        }
-    }
-    if (end > start) {
-        utftext += string.slice(start, stringl);
-    }
-    return utftext;
-}
-function base64Encode(data) {
-    // http://kevin.vanzonneveld.net
-    // +   original by: Tyler Akins (http://rumkin.com)
-    // +   improved by: Bayron Guevara
-    // +   improved by: Thunder.m
-    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-    // +   bugfixed by: Pellentesque Malesuada
-    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-    // -    depends on: this.utf8Encode
-    // *     example 1: this.base64Encode('Kevin van Zonneveld')
-    // *     returns 1: 'S2V2aW4gdmFuIFpvbm5ldmVsZA=='
-    // mozilla has this native
-    // - but breaks in 2.0.0.12!
-    // if (typeof this.window['atob'] == 'function') {
-    //    return atob(data)
-    // }
-    var b64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-    var o1, o2, o3, h1, h2, h3, h4, bits, i = 0, ac = 0, enc = '', tmp_arr = [];
-    if (!data) {
-        return data;
-    }
-    data = utf8Encode(data + '');
-    do {
-        // pack three octets into four hexets
-        o1 = data.charCodeAt(i++);
-        o2 = data.charCodeAt(i++);
-        o3 = data.charCodeAt(i++);
-        bits = (o1 << 16) | (o2 << 8) | o3;
-        h1 = (bits >> 18) & 0x3f;
-        h2 = (bits >> 12) & 0x3f;
-        h3 = (bits >> 6) & 0x3f;
-        h4 = bits & 0x3f;
-        // use hexets to index into b64, and append result to encoded string
-        tmp_arr[ac++] =
-            b64.charAt(h1) + b64.charAt(h2) + b64.charAt(h3) + b64.charAt(h4);
-    } while (i < data.length);
-    enc = tmp_arr.join('');
-    switch (data.length % 3) {
-        case 1:
-            enc = enc.slice(0, -2) + '==';
-            break;
-        case 2:
-            enc = enc.slice(0, -1) + '=';
-            break;
-    }
-    return enc;
-}
-function base64Decode(data) {
-    // http://kevin.vanzonneveld.net
-    // +   original by: Tyler Akins (http://rumkin.com)
-    // +   improved by: Thunder.m
-    // +      input by: Aman Gupta
-    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-    // +   bugfixed by: Onno Marsman
-    // +   bugfixed by: Pellentesque Malesuada
-    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-    // +      input by: Brett Zamir (http://brett-zamir.me)
-    // +   bugfixed by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-    // *     example 1: base64_decode('S2V2aW4gdmFuIFpvbm5ldmVsZA==')
-    // *     returns 1: 'Kevin van Zonneveld'
-    // mozilla has this native
-    // - but breaks in 2.0.0.12!
-    // if (typeof this.window['atob'] == 'function') {
-    //    return atob(data)
-    // }
-    var b64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-    var o1, o2, o3, h1, h2, h3, h4, bits, i = 0, ac = 0, dec = '', tmp_arr = [];
-    if (!data) {
-        return data;
-    }
-    data += '';
-    do { // unpack four hexets into three octets using index points in b64
-        h1 = b64.indexOf(data.charAt(i++));
-        h2 = b64.indexOf(data.charAt(i++));
-        h3 = b64.indexOf(data.charAt(i++));
-        h4 = b64.indexOf(data.charAt(i++));
-        bits = h1 << 18 | h2 << 12 | h3 << 6 | h4;
-        o1 = bits >> 16 & 0xff;
-        o2 = bits >> 8 & 0xff;
-        o3 = bits & 0xff;
-        if (h3 === 64) {
-            tmp_arr[ac++] = String.fromCharCode(o1);
-        }
-        else if (h4 === 64) {
-            tmp_arr[ac++] = String.fromCharCode(o1, o2);
-        }
-        else {
-            tmp_arr[ac++] = String.fromCharCode(o1, o2, o3);
-        }
-    } while (i < data.length);
-    dec = tmp_arr.join('');
-    return dec;
-}
-function urlSafeBase64Encode(v) {
-    v = base64Encode(v);
-    return v.replace(/\//g, '_').replace(/\+/g, '-');
-}
-function urlSafeBase64Decode(v) {
-    v = v.replace(/_/g, '/').replace(/-/g, '+');
-    return base64Decode(v);
-}
-//# sourceMappingURL=base64.js.map
-// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/utils.js
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-var MB = Math.pow(1024, 2);
-// 文件分块
-function getChunks(file, blockSize) {
-    var chunkByteSize = blockSize * MB; // 转换为字节
-    // 如果 chunkByteSize 比文件大，则直接取文件的大小
-    if (chunkByteSize > file.size) {
-        chunkByteSize = file.size;
-    }
-    else {
-        // 因为最多 10000 chunk，所以如果 chunkSize 不符合则把每片 chunk 大小扩大两倍
-        while (file.size > chunkByteSize * 10000) {
-            chunkByteSize *= 2;
-        }
-    }
-    var chunks = [];
-    var count = Math.ceil(file.size / chunkByteSize);
-    for (var i = 0; i < count; i++) {
-        var chunk = file.slice(chunkByteSize * i, i === count - 1 ? file.size : chunkByteSize * (i + 1));
-        chunks.push(chunk);
-    }
-    return chunks;
-}
-function isMetaDataValid(params) {
-    return Object.keys(params).every(function (key) { return key.indexOf('x-qn-meta-') === 0; });
-}
-function isCustomVarsValid(params) {
-    return Object.keys(params).every(function (key) { return key.indexOf('x:') === 0; });
-}
-function sum(list) {
-    return list.reduce(function (data, loaded) { return data + loaded; }, 0);
-}
-function setLocalFileInfo(localKey, info) {
-    try {
-        localStorage.setItem(localKey, JSON.stringify(info));
-    }
-    catch (err) {
-        if (window.console && window.console.warn) {
-            // eslint-disable-next-line no-console
-            console.warn('setLocalFileInfo failed');
-        }
-    }
-}
-function createLocalKey(name, key, size) {
-    var localKey = key == null ? '_' : "_key_" + key + "_";
-    return "qiniu_js_sdk_upload_file_name_" + name + localKey + "size_" + size;
-}
-function removeLocalFileInfo(localKey) {
-    try {
-        localStorage.removeItem(localKey);
-    }
-    catch (err) {
-        if (window.console && window.console.warn) {
-            // eslint-disable-next-line no-console
-            console.warn('removeLocalFileInfo failed');
-        }
-    }
-}
-function getLocalFileInfo(localKey) {
-    try {
-        var localInfo = localStorage.getItem(localKey);
-        return localInfo ? JSON.parse(localInfo) : null;
-    }
-    catch (err) {
-        if (window.console && window.console.warn) {
-            // eslint-disable-next-line no-console
-            console.warn('getLocalFileInfo failed');
-        }
-        return null;
-    }
-}
-function getAuthHeaders(token) {
-    var auth = 'UpToken ' + token;
-    return { Authorization: auth };
-}
-function getHeadersForChunkUpload(token) {
-    var header = getAuthHeaders(token);
-    return __assign({ 'content-type': 'application/octet-stream' }, header);
-}
-function getHeadersForMkFile(token) {
-    var header = getAuthHeaders(token);
-    return __assign({ 'content-type': 'application/json' }, header);
-}
-function createXHR() {
-    if (window.XMLHttpRequest) {
-        return new XMLHttpRequest();
-    }
-    return window.ActiveXObject('Microsoft.XMLHTTP');
-}
-function computeMd5(data) {
-    return __awaiter(this, void 0, void 0, function () {
-        var buffer, spark;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, readAsArrayBuffer(data)];
-                case 1:
-                    buffer = _a.sent();
-                    spark = new spark_md5_default.a.ArrayBuffer();
-                    spark.append(buffer);
-                    return [2 /*return*/, spark.end()];
-            }
-        });
-    });
-}
-function readAsArrayBuffer(data) {
-    return new Promise(function (resolve, reject) {
-        var reader = new FileReader();
-        // evt 类型目前存在问题 https://github.com/Microsoft/TypeScript/issues/4163
-        reader.onload = function (evt) {
-            if (evt.target) {
-                var body = evt.target.result;
-                resolve(body);
-            }
-            else {
-                reject(new Error('progress event target is undefined'));
-            }
-        };
-        reader.onerror = function () {
-            reject(new Error('fileReader read failed'));
-        };
-        reader.readAsArrayBuffer(data);
-    });
-}
-function request(url, options) {
-    return new Promise(function (resolve, reject) {
-        var xhr = createXHR();
-        xhr.open(options.method, url);
-        if (options.onCreate) {
-            options.onCreate(xhr);
-        }
-        if (options.headers) {
-            var headers_1 = options.headers;
-            Object.keys(headers_1).forEach(function (k) {
-                xhr.setRequestHeader(k, headers_1[k]);
-            });
-        }
-        xhr.upload.addEventListener('progress', function (evt) {
-            if (evt.lengthComputable && options.onProgress) {
-                options.onProgress({
-                    loaded: evt.loaded,
-                    total: evt.total
-                });
-            }
-        });
-        xhr.onreadystatechange = function () {
-            var responseText = xhr.responseText;
-            if (xhr.readyState !== 4) {
-                return;
-            }
-            var reqId = xhr.getResponseHeader('x-reqId') || '';
-            if (xhr.status !== 200) {
-                var message = "xhr request failed, code: " + xhr.status;
-                if (responseText) {
-                    message += " response: " + responseText;
-                }
-                reject({
-                    code: xhr.status,
-                    message: message,
-                    reqId: reqId,
-                    isRequestError: true
-                });
-                return;
-            }
-            try {
-                resolve({
-                    data: JSON.parse(responseText),
-                    reqId: reqId
-                });
-            }
-            catch (err) {
-                reject(err);
-            }
-        };
-        xhr.send(options.body);
-    });
-}
-function getPortFromUrl(url) {
-    if (url && url.match) {
-        var groups = url.match(/(^https?)/);
-        if (!groups) {
-            return '';
-        }
-        var type = groups[1];
-        groups = url.match(/^https?:\/\/([^:^/]*):(\d*)/);
-        if (groups) {
-            return groups[2];
-        }
-        if (type === 'http') {
-            return '80';
-        }
-        return '443';
-    }
-    return '';
-}
-function getDomainFromUrl(url) {
-    if (url && url.match) {
-        var groups = url.match(/^https?:\/\/([^:^/]*)/);
-        return groups ? groups[1] : '';
-    }
-    return '';
-}
-function getPutPolicy(token) {
-    var segments = token.split(':');
-    // token 构造的差异参考：https://github.com/qbox/product/blob/master/kodo/auths/UpToken.md#admin-uptoken-authorization
-    var ak = segments.length > 3 ? segments[1] : segments[0];
-    var putPolicy = JSON.parse(urlSafeBase64Decode(segments[segments.length - 1]));
-    return {
-        ak: ak,
-        bucket: putPolicy.scope.split(':')[0]
-    };
-}
-function createObjectURL(file) {
-    var URL = window.URL || window.webkitURL || window.mozURL;
-    return URL.createObjectURL(file);
-}
-function getTransform(image, orientation) {
-    var width = image.width, height = image.height;
-    switch (orientation) {
-        case 1:
-            // default
-            return {
-                width: width,
-                height: height,
-                matrix: [1, 0, 0, 1, 0, 0]
-            };
-        case 2:
-            // horizontal flip
-            return {
-                width: width,
-                height: height,
-                matrix: [-1, 0, 0, 1, width, 0]
-            };
-        case 3:
-            // 180° rotated
-            return {
-                width: width,
-                height: height,
-                matrix: [-1, 0, 0, -1, width, height]
-            };
-        case 4:
-            // vertical flip
-            return {
-                width: width,
-                height: height,
-                matrix: [1, 0, 0, -1, 0, height]
-            };
-        case 5:
-            // vertical flip + -90° rotated
-            return {
-                width: height,
-                height: width,
-                matrix: [0, 1, 1, 0, 0, 0]
-            };
-        case 6:
-            // -90° rotated
-            return {
-                width: height,
-                height: width,
-                matrix: [0, 1, -1, 0, height, 0]
-            };
-        case 7:
-            // horizontal flip + -90° rotate
-            return {
-                width: height,
-                height: width,
-                matrix: [0, -1, -1, 0, height, width]
-            };
-        case 8:
-            // 90° rotated
-            return {
-                width: height,
-                height: width,
-                matrix: [0, -1, 1, 0, 0, width]
-            };
-        default:
-            throw new Error("orientation " + orientation + " is unavailable");
-    }
-}
-//# sourceMappingURL=utils.js.map
-// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/statisticsLog.js
-
-var statisticsLog_StatisticsLogger = /** @class */ (function () {
-    function StatisticsLogger() {
-    }
-    StatisticsLogger.prototype.log = function (info, token) {
-        var logString = Object.values(info).join(',');
-        this.send(logString, token, 0);
-    };
-    StatisticsLogger.prototype.send = function (logString, token, retryCount) {
-        var _this = this;
-        var xhr = createXHR();
-        xhr.open('POST', 'https://uplog.qbox.me/log/3');
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhr.setRequestHeader('Authorization', 'UpToken ' + token);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status !== 200 && ++retryCount <= 3) {
-                _this.send(logString, token, retryCount);
-            }
-        };
-        xhr.send(logString);
-    };
-    return StatisticsLogger;
-}());
-/* harmony default export */ var statisticsLog = (statisticsLog_StatisticsLogger);
-//# sourceMappingURL=statisticsLog.js.map
-// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/pool.js
-var Pool = /** @class */ (function () {
-    function Pool(runTask, limit) {
-        this.runTask = runTask;
-        this.limit = limit;
-        this.queue = [];
-        this.processing = [];
-    }
-    Pool.prototype.enqueue = function (task) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.queue.push({
-                task: task,
-                resolve: resolve,
-                reject: reject
-            });
-            _this.check();
-        });
-    };
-    Pool.prototype.run = function (item) {
-        var _this = this;
-        this.queue = this.queue.filter(function (v) { return v !== item; });
-        this.processing.push(item);
-        this.runTask(item.task).then(function () {
-            _this.processing = _this.processing.filter(function (v) { return v !== item; });
-            item.resolve();
-            _this.check();
-        }, function (err) { return item.reject(err); });
-    };
-    Pool.prototype.check = function () {
-        var _this = this;
-        var processingNum = this.processing.length;
-        var availableNum = this.limit - processingNum;
-        this.queue.slice(0, availableNum).forEach(function (item) {
-            _this.run(item);
-        });
-    };
-    return Pool;
-}());
-
-//# sourceMappingURL=pool.js.map
-// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/config.js
-var config_a;
-/** 上传区域 */
-var region = {
-    z0: 'z0',
-    z1: 'z1',
-    z2: 'z2',
-    na0: 'na0',
-    as0: 'as0'
-};
-/** 上传区域对应的 host */
-var regionUphostMap = (config_a = {},
-    config_a[region.z0] = {
-        srcUphost: 'up.qiniup.com',
-        cdnUphost: 'upload.qiniup.com'
-    },
-    config_a[region.z1] = {
-        srcUphost: 'up-z1.qiniup.com',
-        cdnUphost: 'upload-z1.qiniup.com'
-    },
-    config_a[region.z2] = {
-        srcUphost: 'up-z2.qiniup.com',
-        cdnUphost: 'upload-z2.qiniup.com'
-    },
-    config_a[region.na0] = {
-        srcUphost: 'up-na0.qiniup.com',
-        cdnUphost: 'upload-na0.qiniup.com'
-    },
-    config_a[region.as0] = {
-        srcUphost: 'up-as0.qiniup.com',
-        cdnUphost: 'upload-as0.qiniup.com'
-    },
-    config_a);
-//# sourceMappingURL=config.js.map
-// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/api.js
-var api_assign = (undefined && undefined.__assign) || function () {
-    api_assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return api_assign.apply(this, arguments);
-};
-var api_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var api_generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-
-function getUpHosts(token, protocol) {
-    return api_awaiter(this, void 0, void 0, function () {
-        var putPolicy, url;
-        return api_generator(this, function (_a) {
-            putPolicy = getPutPolicy(token);
-            url = protocol + '//api.qiniu.com/v2/query?ak=' + putPolicy.ak + '&bucket=' + putPolicy.bucket;
-            return [2 /*return*/, request(url, { method: 'GET' })];
-        });
-    });
-}
-/** 获取上传url */
-function getUploadUrl(config, token) {
-    return api_awaiter(this, void 0, void 0, function () {
-        var protocol, upHosts, host, res, hosts;
-        return api_generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    protocol = config.upprotocol;
-                    if (config.uphost) {
-                        return [2 /*return*/, protocol + "//" + config.uphost];
-                    }
-                    if (config.region) {
-                        upHosts = regionUphostMap[config.region];
-                        host = config.useCdnDomain ? upHosts.cdnUphost : upHosts.srcUphost;
-                        return [2 /*return*/, protocol + "//" + host];
-                    }
-                    return [4 /*yield*/, getUpHosts(token, protocol)];
-                case 1:
-                    res = _a.sent();
-                    hosts = res.data.up.acc.main;
-                    return [2 /*return*/, protocol + "//" + hosts[0]];
-            }
-        });
-    });
-}
-/**
- * @param bucket 空间名
- * @param key 目标文件名
- * @param uploadInfo 上传信息
- */
-function getBaseUrl(bucket, key, uploadInfo) {
-    var url = uploadInfo.url, id = uploadInfo.id;
-    return url + "/buckets/" + bucket + "/objects/" + (key != null ? urlSafeBase64Encode(key) : '~') + "/uploads/" + id;
-}
-/**
- * @param token 上传鉴权凭证
- * @param bucket 上传空间
- * @param key 目标文件名
- * @param uploadUrl 上传地址
- */
-function initUploadParts(token, bucket, key, uploadUrl) {
-    var url = uploadUrl + "/buckets/" + bucket + "/objects/" + (key != null ? urlSafeBase64Encode(key) : '~') + "/uploads";
-    return request(url, {
-        method: 'POST',
-        headers: getAuthHeaders(token)
-    });
-}
-/**
- * @param token 上传鉴权凭证
- * @param index 当前 chunk 的索引
- * @param uploadInfo 上传信息
- * @param options 请求参数
- */
-function uploadChunk(token, key, index, uploadInfo, options) {
-    var bucket = getPutPolicy(token).bucket;
-    var url = getBaseUrl(bucket, key, uploadInfo) + ("/" + index);
-    return request(url, api_assign(api_assign({}, options), { method: 'PUT', headers: getHeadersForChunkUpload(token) }));
-}
-/**
- * @param token 上传鉴权凭证
- * @param key 目标文件名
- * @param uploadInfo 上传信息
- * @param options 请求参数
- */
-function uploadComplete(token, key, uploadInfo, options) {
-    var bucket = getPutPolicy(token).bucket;
-    var url = getBaseUrl(bucket, key, uploadInfo);
-    return request(url, api_assign(api_assign({}, options), { method: 'POST', headers: getHeadersForMkFile(token) }));
-}
-/**
- * @param token 上传鉴权凭证
- * @param key 目标文件名
- * @param uploadInfo 上传信息
- */
-function deleteUploadedChunks(token, key, uploadinfo) {
-    var bucket = getPutPolicy(token).bucket;
-    var url = getBaseUrl(bucket, key, uploadinfo);
-    return request(url, {
-        method: 'DELETE',
-        headers: getAuthHeaders(token)
-    });
-}
-//# sourceMappingURL=api.js.map
-// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/upload/base.js
-var base_assign = (undefined && undefined.__assign) || function () {
-    base_assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return base_assign.apply(this, arguments);
-};
-var base_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var base_generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-var DEFAULT_CHUNK_SIZE = 4; // 单位 MB
-var GB = Math.pow(1024, 3);
-var base_Base = /** @class */ (function () {
-    function Base(options, handlers, statisticsLogger) {
-        this.statisticsLogger = statisticsLogger;
-        this.xhrList = [];
-        this.aborted = false;
-        this.retryCount = 0;
-        this.config = base_assign({ useCdnDomain: true, disableStatisticsReport: false, retryCount: 3, checkByMD5: false, uphost: '', upprotocol: 'https:', forceDirect: false, chunkSize: DEFAULT_CHUNK_SIZE, concurrentRequestLimit: 3 }, options.config);
-        this.putExtra = base_assign({ fname: '' }, options.putExtra);
-        this.file = options.file;
-        this.key = options.key;
-        this.token = options.token;
-        this.onData = handlers.onData;
-        this.onError = handlers.onError;
-        this.onComplete = handlers.onComplete;
-        try {
-            this.bucket = getPutPolicy(this.token).bucket;
-        }
-        catch (e) {
-            this.onError(e);
-        }
-    }
-    Base.prototype.putFile = function () {
-        return base_awaiter(this, void 0, void 0, function () {
-            var err, err, err, _a, result, err_1, reqId, code, needRetry, notReachRetryCount;
-            return base_generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        this.aborted = false;
-                        if (!this.putExtra.fname) {
-                            this.putExtra.fname = this.file.name;
-                        }
-                        if (this.file.size > 10000 * GB) {
-                            err = new Error('file size exceed maximum value 10000G');
-                            this.onError(err);
-                            throw err;
-                        }
-                        if (this.putExtra.customVars) {
-                            if (!isCustomVarsValid(this.putExtra.customVars)) {
-                                err = new Error('customVars key should start width x:');
-                                this.onError(err);
-                                throw err;
-                            }
-                        }
-                        if (this.putExtra.metadata) {
-                            if (!isMetaDataValid(this.putExtra.metadata)) {
-                                err = new Error('metadata key should start with x-qn-meta-');
-                                this.onError(err);
-                                throw err;
-                            }
-                        }
-                        _b.label = 1;
-                    case 1:
-                        _b.trys.push([1, 4, , 5]);
-                        _a = this;
-                        return [4 /*yield*/, getUploadUrl(this.config, this.token)];
-                    case 2:
-                        _a.uploadUrl = _b.sent();
-                        this.uploadAt = new Date().getTime();
-                        return [4 /*yield*/, this.run()];
-                    case 3:
-                        result = _b.sent();
-                        this.onComplete(result.data);
-                        if (!this.config.disableStatisticsReport) {
-                            this.sendLog(result.reqId, 200);
-                        }
-                        return [2 /*return*/, result];
-                    case 4:
-                        err_1 = _b.sent();
-                        this.clear();
-                        if (err_1.isRequestError && !this.config.disableStatisticsReport) {
-                            reqId = this.aborted ? '' : err_1.reqId;
-                            code = this.aborted ? -2 : err_1.code;
-                            this.sendLog(reqId, code);
-                        }
-                        needRetry = err_1.isRequestError && err_1.code === 0 && !this.aborted;
-                        notReachRetryCount = ++this.retryCount <= this.config.retryCount;
-                        // 以下条件满足其中之一则会进行重新上传：
-                        // 1. 满足 needRetry 的条件且 retryCount 不为 0
-                        // 2. uploadId 无效时在 resume 里会清除本地数据，并且这里触发重新上传
-                        if (needRetry && notReachRetryCount || err_1.code === 612) {
-                            return [2 /*return*/, this.putFile()];
-                        }
-                        this.onError(err_1);
-                        throw err_1;
-                    case 5: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    Base.prototype.clear = function () {
-        this.xhrList.forEach(function (xhr) { return xhr.abort(); });
-        this.xhrList = [];
-    };
-    Base.prototype.stop = function () {
-        this.clear();
-        this.aborted = true;
-    };
-    Base.prototype.addXhr = function (xhr) {
-        this.xhrList.push(xhr);
-    };
-    Base.prototype.sendLog = function (reqId, code) {
-        this.statisticsLogger.log({
-            code: code,
-            reqId: reqId,
-            host: getDomainFromUrl(this.uploadUrl),
-            remoteIp: '',
-            port: getPortFromUrl(this.uploadUrl),
-            duration: (new Date().getTime() - this.uploadAt) / 1000,
-            time: Math.floor(this.uploadAt / 1000),
-            bytesSent: this.progress ? this.progress.total.loaded : 0,
-            upType: 'jssdk-h5',
-            size: this.file.size
-        }, this.token);
-    };
-    Base.prototype.getProgressInfoItem = function (loaded, size) {
-        return {
-            loaded: loaded,
-            size: size,
-            percent: loaded / size * 100
-        };
-    };
-    return Base;
-}());
-/* harmony default export */ var base = (base_Base);
-//# sourceMappingURL=base.js.map
-// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/upload/resume.js
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var resume_assign = (undefined && undefined.__assign) || function () {
-    resume_assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return resume_assign.apply(this, arguments);
-};
-var resume_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var resume_generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-
-
-/** 是否为正整数 */
-function isPositiveInteger(n) {
-    var re = /^[1-9]\d*$/;
-    return re.test(String(n));
-}
-var resume_Resume = /** @class */ (function (_super) {
-    __extends(Resume, _super);
-    function Resume() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Resume.prototype.run = function () {
-        return resume_awaiter(this, void 0, void 0, function () {
-            var pool, uploadChunks, result;
-            var _this = this;
-            return resume_generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (!this.config.chunkSize || !isPositiveInteger(this.config.chunkSize)) {
-                            throw new Error('chunkSize must be a positive integer');
-                        }
-                        if (this.config.chunkSize > 1024) {
-                            throw new Error('chunkSize maximum value is 1024');
-                        }
-                        return [4 /*yield*/, this.initBeforeUploadChunks()];
-                    case 1:
-                        _a.sent();
-                        pool = new Pool(function (chunkInfo) { return _this.uploadChunk(chunkInfo); }, this.config.concurrentRequestLimit);
-                        uploadChunks = this.chunks.map(function (chunk, index) { return pool.enqueue({ chunk: chunk, index: index }); });
-                        result = Promise.all(uploadChunks).then(function () { return _this.mkFileReq(); });
-                        result.then(function () {
-                            removeLocalFileInfo(_this.getLocalKey());
-                        }, function (err) {
-                            // uploadId 无效，上传参数有误（多由于本地存储信息的 uploadId 失效
-                            if (err.code === 612 || err.code === 400) {
-                                removeLocalFileInfo(_this.getLocalKey());
-                            }
-                        });
-                        return [2 /*return*/, result];
-                }
-            });
-        });
-    };
-    Resume.prototype.uploadChunk = function (chunkInfo) {
-        return resume_awaiter(this, void 0, void 0, function () {
-            var index, chunk, info, shouldCheckMD5, reuseSaved, md5, onProgress, requestOptions, response;
-            var _this = this;
-            return resume_generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        index = chunkInfo.index, chunk = chunkInfo.chunk;
-                        info = this.uploadedList[index];
-                        shouldCheckMD5 = this.config.checkByMD5;
-                        reuseSaved = function () {
-                            _this.updateChunkProgress(chunk.size, index);
-                        };
-                        if (info && !shouldCheckMD5) {
-                            reuseSaved();
-                            return [2 /*return*/];
-                        }
-                        return [4 /*yield*/, computeMd5(chunk)];
-                    case 1:
-                        md5 = _a.sent();
-                        if (info && md5 === info.md5) {
-                            reuseSaved();
-                            return [2 /*return*/];
-                        }
-                        onProgress = function (data) {
-                            _this.updateChunkProgress(data.loaded, index);
-                        };
-                        requestOptions = {
-                            body: chunk,
-                            onProgress: onProgress,
-                            onCreate: function (xhr) { return _this.addXhr(xhr); }
-                        };
-                        return [4 /*yield*/, uploadChunk(this.token, this.key, chunkInfo.index + 1, this.getUploadInfo(), requestOptions)
-                            // 在某些浏览器环境下，xhr 的 progress 事件无法被触发，progress 为 null，这里在每次分片上传完成后都手动更新下 progress
-                        ];
-                    case 2:
-                        response = _a.sent();
-                        // 在某些浏览器环境下，xhr 的 progress 事件无法被触发，progress 为 null，这里在每次分片上传完成后都手动更新下 progress
-                        onProgress({
-                            loaded: chunk.size,
-                            total: chunk.size
-                        });
-                        this.uploadedList[index] = {
-                            etag: response.data.etag,
-                            md5: response.data.md5,
-                            size: chunk.size
-                        };
-                        setLocalFileInfo(this.getLocalKey(), {
-                            id: this.uploadId,
-                            data: this.uploadedList
-                        });
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    Resume.prototype.mkFileReq = function () {
-        return resume_awaiter(this, void 0, void 0, function () {
-            var data, result;
-            var _this = this;
-            return resume_generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        data = resume_assign(resume_assign(resume_assign({ parts: this.uploadedList.map(function (value, index) { return ({
-                                etag: value.etag,
-                                partNumber: index + 1
-                            }); }), fname: this.putExtra.fname }, this.putExtra.mimeType && { mimeType: this.putExtra.mimeType }), this.putExtra.customVars && { customVars: this.putExtra.customVars }), this.putExtra.metadata && { metadata: this.putExtra.metadata });
-                        return [4 /*yield*/, uploadComplete(this.token, this.key, this.getUploadInfo(), {
-                                onCreate: function (xhr) { return _this.addXhr(xhr); },
-                                body: JSON.stringify(data)
-                            })];
-                    case 1:
-                        result = _a.sent();
-                        this.updateMkFileProgress(1);
-                        return [2 /*return*/, result];
-                }
-            });
-        });
-    };
-    Resume.prototype.initBeforeUploadChunks = function () {
-        return resume_awaiter(this, void 0, void 0, function () {
-            var localInfo, res;
-            return resume_generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        localInfo = getLocalFileInfo(this.getLocalKey());
-                        if (!!localInfo) return [3 /*break*/, 2];
-                        // 防止本地信息已被破坏，初始化时 clear 一下
-                        removeLocalFileInfo(this.getLocalKey());
-                        return [4 /*yield*/, initUploadParts(this.token, this.bucket, this.key, this.uploadUrl)];
-                    case 1:
-                        res = _a.sent();
-                        this.uploadId = res.data.uploadId;
-                        this.uploadedList = [];
-                        return [3 /*break*/, 3];
-                    case 2:
-                        this.uploadId = localInfo.id;
-                        this.uploadedList = localInfo.data;
-                        _a.label = 3;
-                    case 3:
-                        this.chunks = getChunks(this.file, this.config.chunkSize);
-                        this.loaded = {
-                            mkFileProgress: 0,
-                            chunks: this.chunks.map(function (_) { return 0; })
-                        };
-                        this.notifyResumeProgress();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    Resume.prototype.getUploadInfo = function () {
-        return {
-            id: this.uploadId,
-            url: this.uploadUrl
-        };
-    };
-    Resume.prototype.getLocalKey = function () {
-        return createLocalKey(this.file.name, this.key, this.file.size);
-    };
-    Resume.prototype.updateChunkProgress = function (loaded, index) {
-        this.loaded.chunks[index] = loaded;
-        this.notifyResumeProgress();
-    };
-    Resume.prototype.updateMkFileProgress = function (progress) {
-        this.loaded.mkFileProgress = progress;
-        this.notifyResumeProgress();
-    };
-    Resume.prototype.notifyResumeProgress = function () {
-        var _this = this;
-        this.progress = {
-            total: this.getProgressInfoItem(sum(this.loaded.chunks) + this.loaded.mkFileProgress, this.file.size + 1 // 防止在 complete 未调用的时候进度显示 100%
-            ),
-            chunks: this.chunks.map(function (chunk, index) { return (_this.getProgressInfoItem(_this.loaded.chunks[index], chunk.size)); }),
-            uploadInfo: {
-                id: this.uploadId,
-                url: this.uploadUrl
-            }
-        };
-        this.onData(this.progress);
-    };
-    return Resume;
-}(base));
-/* harmony default export */ var resume = (resume_Resume);
-//# sourceMappingURL=resume.js.map
-// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/upload/direct.js
-var direct_extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var direct_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var direct_generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-var direct_Direct = /** @class */ (function (_super) {
-    direct_extends(Direct, _super);
-    function Direct() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Direct.prototype.run = function () {
-        return direct_awaiter(this, void 0, void 0, function () {
-            var formData, customVars_1, result;
-            var _this = this;
-            return direct_generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        formData = new FormData();
-                        formData.append('file', this.file);
-                        formData.append('token', this.token);
-                        if (this.key != null) {
-                            formData.append('key', this.key);
-                        }
-                        formData.append('fname', this.putExtra.fname);
-                        if (this.putExtra.customVars) {
-                            customVars_1 = this.putExtra.customVars;
-                            Object.keys(customVars_1).forEach(function (key) { return formData.append(key, customVars_1[key].toString()); });
-                        }
-                        return [4 /*yield*/, request(this.uploadUrl, {
-                                method: 'POST',
-                                body: formData,
-                                onProgress: function (data) {
-                                    _this.updateDirectProgress(data.loaded, data.total);
-                                },
-                                onCreate: function (xhr) { return _this.addXhr(xhr); }
-                            })];
-                    case 1:
-                        result = _a.sent();
-                        this.finishDirectProgress();
-                        return [2 /*return*/, result];
-                }
-            });
-        });
-    };
-    Direct.prototype.updateDirectProgress = function (loaded, total) {
-        // 当请求未完成时可能进度会达到100，所以total + 1来防止这种情况出现
-        this.progress = { total: this.getProgressInfoItem(loaded, total + 1) };
-        this.onData(this.progress);
-    };
-    Direct.prototype.finishDirectProgress = function () {
-        // 在某些浏览器环境下，xhr 的 progress 事件无法被触发，progress 为 null，这里 fake 下
-        if (!this.progress) {
-            this.progress = { total: this.getProgressInfoItem(this.file.size, this.file.size) };
-            this.onData(this.progress);
-            return;
-        }
-        var total = this.progress.total;
-        this.progress = { total: this.getProgressInfoItem(total.loaded + 1, total.size) };
-        this.onData(this.progress);
-    };
-    return Direct;
-}(base));
-/* harmony default export */ var direct = (direct_Direct);
-//# sourceMappingURL=direct.js.map
-// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/upload/index.js
-
-
-
-
-
-function createUploadManager(options, handlers, statisticsLogger) {
-    if (options.config && options.config.forceDirect) {
-        return new direct(options, handlers, statisticsLogger);
-    }
-    return options.file.size > 4 * MB
-        ? new resume(options, handlers, statisticsLogger)
-        : new direct(options, handlers, statisticsLogger);
-}
-//# sourceMappingURL=index.js.map
-// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/observable.js
-var observable_extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var observable_assign = (undefined && undefined.__assign) || function () {
-    observable_assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return observable_assign.apply(this, arguments);
-};
-/** 表示可清理的资源，比如 Observable 的执行 */
-var Subscription = /** @class */ (function () {
-    function Subscription() {
-        /** 用来标示该 Subscription 是否被取消订阅的标示位 */
-        this.closed = false;
-    }
-    /** 取消 observer 的订阅 */
-    Subscription.prototype.unsubscribe = function () {
-        if (this.closed) {
-            return;
-        }
-        this.closed = true;
-        if (this._unsubscribe) {
-            this._unsubscribe();
-        }
-    };
-    /** 添加一个 tear down 在该 Subscription 的 unsubscribe() 期间调用 */
-    Subscription.prototype.add = function (teardown) {
-        this._unsubscribe = teardown;
-    };
-    return Subscription;
-}());
-/**
- * 实现 Observer 接口并且继承 Subscription 类，Observer 是消费 Observable 值的公有 API
- * 所有 Observers 都转化成了 Subscriber，以便提供类似 Subscription 的能力，比如 unsubscribe
-*/
-var Subscriber = /** @class */ (function (_super) {
-    observable_extends(Subscriber, _super);
-    function Subscriber(observerOrNext, error, complete) {
-        var _this = _super.call(this) || this;
-        _this.isStopped = false;
-        if (observerOrNext && typeof observerOrNext === 'object') {
-            _this.destination = observerOrNext;
-        }
-        else {
-            _this.destination = observable_assign(observable_assign(observable_assign({}, observerOrNext && { next: observerOrNext }), error && { error: error }), complete && { complete: complete });
-        }
-        return _this;
-    }
-    Subscriber.prototype.unsubscribe = function () {
-        if (this.closed) {
-            return;
-        }
-        this.isStopped = true;
-        _super.prototype.unsubscribe.call(this);
-    };
-    Subscriber.prototype.next = function (value) {
-        if (!this.isStopped && this.destination.next) {
-            this.destination.next(value);
-        }
-    };
-    Subscriber.prototype.error = function (err) {
-        if (!this.isStopped && this.destination.error) {
-            this.isStopped = true;
-            this.destination.error(err);
-        }
-    };
-    Subscriber.prototype.complete = function (result) {
-        if (!this.isStopped && this.destination.complete) {
-            this.isStopped = true;
-            this.destination.complete(result);
-        }
-    };
-    return Subscriber;
-}(Subscription));
-
-/** 可观察对象，当前的上传事件的集合 */
-var Observable = /** @class */ (function () {
-    function Observable(_subscribe) {
-        this._subscribe = _subscribe;
-    }
-    Observable.prototype.subscribe = function (observerOrNext, error, complete) {
-        var sink = new Subscriber(observerOrNext, error, complete);
-        sink.add(this._subscribe(sink));
-        return sink;
-    };
-    return Observable;
-}());
-
-//# sourceMappingURL=observable.js.map
-// EXTERNAL MODULE: ./node_modules/exif-js/exif.js
-var exif = __webpack_require__("6f45");
-
-// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/compress.js
-var compress_assign = (undefined && undefined.__assign) || function () {
-    compress_assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return compress_assign.apply(this, arguments);
-};
-var compress_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var compress_generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var __read = (undefined && undefined.__read) || function (o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
-        try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
-        }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-};
-var __spread = (undefined && undefined.__spread) || function () {
-    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
-    return ar;
-};
-
-
-var compress_mimeTypes = {
-    PNG: 'image/png',
-    JPEG: 'image/jpeg',
-    WEBP: 'image/webp',
-    BMP: 'image/bmp'
-};
-var maxSteps = 4;
-var scaleFactor = Math.log(2);
-var supportMimeTypes = Object.keys(compress_mimeTypes).map(function (type) { return compress_mimeTypes[type]; });
-var defaultType = compress_mimeTypes.JPEG;
-function isSupportedType(type) {
-    return supportMimeTypes.includes(type);
-}
-var compress_Compress = /** @class */ (function () {
-    function Compress(file, config) {
-        this.file = file;
-        this.config = config;
-        this.config = compress_assign({ quality: 0.92, noCompressIfLarger: false }, this.config);
-    }
-    Compress.prototype.process = function () {
-        return compress_awaiter(this, void 0, void 0, function () {
-            var srcDimension, originImage, canvas, scale, scaleCanvas, distBlob;
-            return compress_generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.outputType = this.file.type;
-                        srcDimension = {};
-                        if (!isSupportedType(this.file.type)) {
-                            throw new Error("unsupported file type: " + this.file.type);
-                        }
-                        return [4 /*yield*/, this.getOriginImage()];
-                    case 1:
-                        originImage = _a.sent();
-                        return [4 /*yield*/, this.getCanvas(originImage)];
-                    case 2:
-                        canvas = _a.sent();
-                        scale = 1;
-                        if (this.config.maxWidth) {
-                            scale = Math.min(1, this.config.maxWidth / canvas.width);
-                        }
-                        if (this.config.maxHeight) {
-                            scale = Math.min(1, scale, this.config.maxHeight / canvas.height);
-                        }
-                        srcDimension.width = canvas.width;
-                        srcDimension.height = canvas.height;
-                        return [4 /*yield*/, this.doScale(canvas, scale)];
-                    case 3:
-                        scaleCanvas = _a.sent();
-                        distBlob = this.toBlob(scaleCanvas);
-                        if (distBlob.size > this.file.size && this.config.noCompressIfLarger) {
-                            return [2 /*return*/, {
-                                    dist: this.file,
-                                    width: srcDimension.width,
-                                    height: srcDimension.height
-                                }];
-                        }
-                        return [2 /*return*/, {
-                                dist: distBlob,
-                                width: scaleCanvas.width,
-                                height: scaleCanvas.height
-                            }];
-                }
-            });
-        });
-    };
-    Compress.prototype.clear = function (ctx, width, height) {
-        // jpeg 没有 alpha 通道，透明区间会被填充成黑色，这里把透明区间填充为白色
-        if (this.outputType === defaultType) {
-            ctx.fillStyle = '#fff';
-            ctx.fillRect(0, 0, width, height);
-        }
-        else {
-            ctx.clearRect(0, 0, width, height);
-        }
-    };
-    /** 通过 file 初始化 image 对象 */
-    Compress.prototype.getOriginImage = function () {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            var url = createObjectURL(_this.file);
-            var img = new Image();
-            img.onload = function () {
-                resolve(img);
-            };
-            img.onerror = function () {
-                reject('image load error');
-            };
-            img.src = url;
-        });
-    };
-    Compress.prototype.getCanvas = function (img) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            // 通过得到图片的信息来调整显示方向以正确显示图片，主要解决 ios 系统上的图片会有旋转的问题
-            exif["EXIF"].getData(img, function () {
-                var orientation = exif["EXIF"].getTag(img, 'Orientation') || 1;
-                var _a = getTransform(img, orientation), width = _a.width, height = _a.height, matrix = _a.matrix;
-                var canvas = document.createElement('canvas');
-                var context = canvas.getContext('2d');
-                canvas.width = width;
-                canvas.height = height;
-                if (!context) {
-                    reject(new Error('context is null'));
-                    return;
-                }
-                _this.clear(context, width, height);
-                context.transform.apply(context, __spread(matrix));
-                context.drawImage(img, 0, 0);
-                resolve(canvas);
-            });
-        });
-    };
-    Compress.prototype.doScale = function (source, scale) {
-        return compress_awaiter(this, void 0, void 0, function () {
-            var sctx, steps, factor, mirror, mctx, width, height, originWidth, originHeight, src, context, i, dw, dh, canvas, data;
-            return compress_generator(this, function (_a) {
-                if (scale === 1) {
-                    return [2 /*return*/, source];
-                }
-                sctx = source.getContext('2d');
-                steps = Math.min(maxSteps, Math.ceil((1 / scale) / scaleFactor));
-                factor = Math.pow(scale, (1 / steps));
-                mirror = document.createElement('canvas');
-                mctx = mirror.getContext('2d');
-                width = source.width, height = source.height;
-                originWidth = width;
-                originHeight = height;
-                mirror.width = width;
-                mirror.height = height;
-                if (!mctx || !sctx) {
-                    throw new Error("mctx or sctx can't be null");
-                }
-                for (i = 0; i < steps; i++) {
-                    dw = width * factor | 0 // eslint-disable-line no-bitwise
-                    ;
-                    dh = height * factor | 0 // eslint-disable-line no-bitwise
-                    ;
-                    // 到最后一步的时候 dw, dh 用目标缩放尺寸，否则会出现最后尺寸偏小的情况
-                    if (i === steps - 1) {
-                        dw = originWidth * scale;
-                        dh = originHeight * scale;
-                    }
-                    if (i % 2 === 0) {
-                        src = source;
-                        context = mctx;
-                    }
-                    else {
-                        src = mirror;
-                        context = sctx;
-                    }
-                    // 每次画前都清空，避免图像重叠
-                    this.clear(context, width, height);
-                    context.drawImage(src, 0, 0, width, height, 0, 0, dw, dh);
-                    width = dw;
-                    height = dh;
-                }
-                canvas = src === source ? mirror : source;
-                data = context.getImageData(0, 0, width, height);
-                // resize
-                canvas.width = width;
-                canvas.height = height;
-                // store image data
-                context.putImageData(data, 0, 0);
-                return [2 /*return*/, canvas];
-            });
-        });
-    };
-    /** 这里把 base64 字符串转为 blob 对象 */
-    Compress.prototype.toBlob = function (result) {
-        var dataURL = result.toDataURL(this.outputType, this.config.quality);
-        var buffer = atob(dataURL.split(',')[1]).split('').map(function (char) { return char.charCodeAt(0); });
-        var blob = new Blob([new Uint8Array(buffer)], { type: this.outputType });
-        return blob;
-    };
-    return Compress;
-}());
-var compressImage = function (file, options) { return new compress_Compress(file, options).process(); };
-/* harmony default export */ var compress = (compressImage);
-//# sourceMappingURL=compress.js.map
-// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/image.js
-
-
-function getImageUrl(key, domain) {
-    key = encodeURIComponent(key);
-    if (domain.slice(domain.length - 1) !== '/') {
-        domain += '/';
-    }
-    return domain + key;
-}
-function imageView2(op, key, domain) {
-    if (!/^\d$/.test(String(op.mode))) {
-        throw 'mode should be number in imageView2';
-    }
-    var mode = op.mode, w = op.w, h = op.h, q = op.q, format = op.format;
-    if (!w && !h) {
-        throw 'param w and h is empty in imageView2';
-    }
-    var imageUrl = 'imageView2/' + encodeURIComponent(mode);
-    imageUrl += w ? '/w/' + encodeURIComponent(w) : '';
-    imageUrl += h ? '/h/' + encodeURIComponent(h) : '';
-    imageUrl += q ? '/q/' + encodeURIComponent(q) : '';
-    imageUrl += format ? '/format/' + encodeURIComponent(format) : '';
-    if (key && domain) {
-        imageUrl = getImageUrl(key, domain) + '?' + imageUrl;
-    }
-    return imageUrl;
-}
-// invoke the imageMogr2 api of Qiniu
-function imageMogr2(op, key, domain) {
-    var autoOrient = op['auto-orient'];
-    var thumbnail = op.thumbnail, strip = op.strip, gravity = op.gravity, crop = op.crop, quality = op.quality, rotate = op.rotate, format = op.format, blur = op.blur;
-    var imageUrl = 'imageMogr2';
-    imageUrl += autoOrient ? '/auto-orient' : '';
-    imageUrl += thumbnail ? '/thumbnail/' + encodeURIComponent(thumbnail) : '';
-    imageUrl += strip ? '/strip' : '';
-    imageUrl += gravity ? '/gravity/' + encodeURIComponent(gravity) : '';
-    imageUrl += quality ? '/quality/' + encodeURIComponent(quality) : '';
-    imageUrl += crop ? '/crop/' + encodeURIComponent(crop) : '';
-    imageUrl += rotate ? '/rotate/' + encodeURIComponent(rotate) : '';
-    imageUrl += format ? '/format/' + encodeURIComponent(format) : '';
-    imageUrl += blur ? '/blur/' + encodeURIComponent(blur) : '';
-    if (key && domain) {
-        imageUrl = getImageUrl(key, domain) + '?' + imageUrl;
-    }
-    return imageUrl;
-}
-// invoke the watermark api of Qiniu
-function watermark(op, key, domain) {
-    var mode = op.mode;
-    if (!mode) {
-        throw "mode can't be empty in watermark";
-    }
-    var imageUrl = 'watermark/' + mode;
-    if (mode !== 1 && mode !== 2) {
-        throw 'mode is wrong';
-    }
-    if (mode === 1) {
-        var image = op.image;
-        if (!image) {
-            throw "image can't be empty in watermark";
-        }
-        imageUrl += image ? '/image/' + urlSafeBase64Encode(image) : '';
-    }
-    if (mode === 2) {
-        var text = op.text, font = op.font, fontsize = op.fontsize, fill = op.fill;
-        if (!text) {
-            throw "text can't be empty in watermark";
-        }
-        imageUrl += text ? '/text/' + urlSafeBase64Encode(text) : '';
-        imageUrl += font ? '/font/' + urlSafeBase64Encode(font) : '';
-        imageUrl += fontsize ? '/fontsize/' + fontsize : '';
-        imageUrl += fill ? '/fill/' + urlSafeBase64Encode(fill) : '';
-    }
-    var dissolve = op.dissolve, gravity = op.gravity, dx = op.dx, dy = op.dy;
-    imageUrl += dissolve ? '/dissolve/' + encodeURIComponent(dissolve) : '';
-    imageUrl += gravity ? '/gravity/' + encodeURIComponent(gravity) : '';
-    imageUrl += dx ? '/dx/' + encodeURIComponent(dx) : '';
-    imageUrl += dy ? '/dy/' + encodeURIComponent(dy) : '';
-    if (key && domain) {
-        imageUrl = getImageUrl(key, domain) + '?' + imageUrl;
-    }
-    return imageUrl;
-}
-// invoke the imageInfo api of Qiniu
-function imageInfo(key, domain) {
-    var url = getImageUrl(key, domain) + '?imageInfo';
-    return request(url, { method: 'GET' });
-}
-// invoke the exif api of Qiniu
-function image_exif(key, domain) {
-    var url = getImageUrl(key, domain) + '?exif';
-    return request(url, { method: 'GET' });
-}
-function pipeline(arr, key, domain) {
-    var isArray = Object.prototype.toString.call(arr) === '[object Array]';
-    var option;
-    var errOp = false;
-    var imageUrl = '';
-    if (isArray) {
-        for (var i = 0, len = arr.length; i < len; i++) {
-            option = arr[i];
-            if (!option.fop) {
-                throw "fop can't be empty in pipeline";
-            }
-            switch (option.fop) {
-                case 'watermark':
-                    imageUrl += watermark(option) + '|';
-                    break;
-                case 'imageView2':
-                    imageUrl += imageView2(option) + '|';
-                    break;
-                case 'imageMogr2':
-                    imageUrl += imageMogr2(option) + '|';
-                    break;
-                default:
-                    errOp = true;
-                    break;
-            }
-            if (errOp) {
-                throw 'fop is wrong in pipeline';
-            }
-        }
-        if (key && domain) {
-            imageUrl = getImageUrl(key, domain) + '?' + imageUrl;
-            var length_1 = imageUrl.length;
-            if (imageUrl.slice(length_1 - 1) === '|') {
-                imageUrl = imageUrl.slice(0, length_1 - 1);
-            }
-        }
-        return imageUrl;
-    }
-    throw "pipeline's first param should be array";
-}
-//# sourceMappingURL=image.js.map
-// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/index.js
-
-
-
-
-var esm_statisticsLogger = new statisticsLog();
-/**
- * @param file 上传文件
- * @param key 目标文件名
- * @param token 上传凭证
- * @param putExtra 上传文件的相关资源信息配置
- * @param config 上传任务的配置
- * @returns 返回用于上传任务的可观察对象
- */
-function upload(file, key, token, putExtra, config) {
-    var options = {
-        file: file,
-        key: key,
-        token: token,
-        putExtra: putExtra,
-        config: config
-    };
-    return new Observable(function (observer) {
-        var manager = createUploadManager(options, {
-            onData: function (data) { return observer.next(data); },
-            onError: function (err) { return observer.error(err); },
-            onComplete: function (res) { return observer.complete(res); }
-        }, esm_statisticsLogger);
-        manager.putFile();
-        return manager.stop.bind(manager);
-    });
-}
-
-
-
-
-
-
-//# sourceMappingURL=index.js.map
-// EXTERNAL MODULE: ./node_modules/random-string/lib/random-string.js
-var random_string = __webpack_require__("e875");
-var random_string_default = /*#__PURE__*/__webpack_require__.n(random_string);
-
-// CONCATENATED MODULE: ./src/util/utils.js
-
-
-const isImage = file => {
-  return file.type && file.type.includes('image/');
-};
-const utils_upload = (file, token, qiniuDomain, imgStyle) => {
-  return new Promise((resolve, reject) => {
-    compress(file, {
-      quality: 0.9,
-      noCompressIfLarger: true,
-      maxWidth: 750
-    }).then(data => {
-      // console.log(data)
-      const type = file.name.split('.').pop();
-      const randomHash = random_string_default()({
-        length: 20
-      }); // console.log(randomHash)
-
-      const key = randomHash + '.' + type;
-      const observable = upload(data.dist, key, token);
-      observable.subscribe({
-        complete(res) {
-          // console.log(res)
-          const url = imgStyle ? qiniuDomain + res.key + imgStyle : qiniuDomain + res.key;
-          resolve(url);
-        },
-
-        error(err) {
-          reject(err);
-        }
-
-      });
-    });
-  });
-};
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Editor.vue?vue&type=script&lang=js&
-//
-//
-//
-//
-//
-
- // import 'highlight.js/styles/atom-one-dark.css'
-
-
-/* harmony default export */ var Editorvue_type_script_lang_js_ = ({
-  model: {
-    event: 'changeHtmlInfo',
-    prop: 'initInfo'
-  },
-  props: {
-    initInfo: {
-      type: String
-    },
-    domain: {
-      type: String,
-      required: true
-    },
-    customStyle: {
-      default: ''
-    }
-  },
-
-  created() {
-    this.info = this.initInfo;
-  },
-
-  data() {
-    return {
-      info: '',
-      token: ''
-    };
-  },
-
-  methods: {
-    setToken(token) {
-      this.token = token;
-    },
-
-    dragFile(ev) {
-      if (!this.token) {
-        // 没有token直接返回
-        console.log('没有实现七牛云上传token');
-        return;
-      }
-
-      const myField = this.$refs.textarea;
-      const start = myField.selectionStart; // console.log(myField.value)
-
-      const files = ev.dataTransfer.files; // const token = await getToken()
-      // const token = 'YOXpF0XvM_3yVDsz5C-hWwrFE5rtDAUQC3XjBQEG:QLjFeRD-YQifnHf0aRVlFJcIjPw=:eyJzY29wZSI6ImRvYy1hcnRpY2xlLWltYWdlIiwiZGVhZGxpbmUiOjE1OTcxMzQyNjB9'
-      // 判断是否是图片
-
-      files.forEach((file, index) => {
-        if (isImage(file, index)) {
-          utils_upload(file, this.token, this.domain).then(url => {
-            const imgStr = `![${file.name}](${url})\n`;
-            myField.value = myField.value.substring(0, start) + imgStr + myField.value.substring(start, myField.value.length);
-            this.info = myField.value; // console.log(this.info)
-
-            this.changeInfo(); // myField.focus()
-            // this.changeInfo()
-          });
-        } else {
-          console.log('只能上传图片，自动忽略非图片文件');
-        }
-      });
-    },
-
-    changeInfo() {
-      // console.log('change')
-      const htmlInfo = marked_default()(this.info);
-      this.$emit('changeHtmlInfo', htmlInfo);
-    }
-
-  },
-
-  mounted() {
-    marked_default.a.setOptions({
-      renderer: new marked_default.a.Renderer(),
-      highlight: function (code) {
-        return lib_default.a.highlightAuto(code).value;
-      },
-      pedantic: false,
-      gfm: true,
-      tables: true,
-      breaks: false,
-      sanitize: false,
-      smartLists: true,
-      smartypants: false,
-      xhtml: false
-    });
-    this.$emit('getToken');
-    this.time = setInterval(() => {
-      this.$emit('getToken');
-    }, 120000);
-  },
-
-  beforeDestroy() {
-    this.time && clearInterval(this.time);
-  }
-
-});
-// CONCATENATED MODULE: ./src/components/Editor.vue?vue&type=script&lang=js&
- /* harmony default export */ var components_Editorvue_type_script_lang_js_ = (Editorvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/components/Editor.vue
-
-
-
-function injectStyles (context) {
-  
-  var style0 = __webpack_require__("73f3")
-if (style0.__inject__) style0.__inject__(context)
-
-}
-
-/* normalize component */
-
-var component = normalizeComponent(
-  components_Editorvue_type_script_lang_js_,
-  Editorvue_type_template_id_89218b56_scoped_true_render,
-  Editorvue_type_template_id_89218b56_scoped_true_staticRenderFns,
-  false,
-  injectStyles,
-  "89218b56",
-  null
-  ,true
-)
-
-/* harmony default export */ var Editor = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=script&lang=js&shadow
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ var Appvue_type_script_lang_js_shadow = ({
-  name: 'App',
-  props: {
-    theme: {
-      type: String,
-      default: () => {
-        return 'light';
-      }
-    },
-    domain: {
-      type: String,
-      required: true
-    },
-    customStyle: {
-      default: ''
-    }
-  },
-  components: {
-    Editor: Editor
-  },
-
-  data() {
-    return {
-      info: '',
-      htmlInfo: ''
-    };
-  },
-
-  methods: {
-    getToken() {
-      this.$emit('getUploadToken');
-    },
-
-    setToken(token) {
-      this.$refs.myqiniuEditorOldDeepComponent.setToken(token);
-    }
-
-  }
-});
-// CONCATENATED MODULE: ./src/App.vue?vue&type=script&lang=js&shadow
- /* harmony default export */ var src_Appvue_type_script_lang_js_shadow = (Appvue_type_script_lang_js_shadow); 
-// CONCATENATED MODULE: ./src/App.vue?shadow
-
-
-
-function Appshadow_injectStyles (context) {
-  
-  var style0 = __webpack_require__("8fc7")
-if (style0.__inject__) style0.__inject__(context)
-
-}
-
-/* normalize component */
-
-var Appshadow_component = normalizeComponent(
-  src_Appvue_type_script_lang_js_shadow,
-  render,
-  staticRenderFns,
-  false,
-  Appshadow_injectStyles,
-  null,
-  null
-  ,true
-)
-
-/* harmony default export */ var Appshadow = (Appshadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-wc.js
-
-
-
-
-// runtime shared by every component chunk
-
-
-
-
-
-window.customElements.define('md-editor', vue_wc_wrapper(external_Vue_default.a, Appshadow))
 
 /***/ }),
 
@@ -19820,6 +17417,17 @@ module.exports = dart;
 
 /***/ }),
 
+/***/ "7c55":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_3_node_modules_less_loader_dist_cjs_js_ref_10_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_less___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("bc9f");
+/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_3_node_modules_less_loader_dist_cjs_js_ref_10_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_less___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_3_node_modules_less_loader_dist_cjs_js_ref_10_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_less___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_3_node_modules_less_loader_dist_cjs_js_ref_10_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_less___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
 /***/ "7c71":
 /***/ (function(module, exports) {
 
@@ -20011,6 +17619,20 @@ function dos(hljs) {
 }
 
 module.exports = dos;
+
+
+/***/ }),
+
+/***/ "7d79":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__("24fb");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, "blockquote,code,img,p{margin:10px 0}img{width:100%}.show{font-size:1rem}code{display:block;width:100%;padding:10px;box-sizing:border-box;font-size:1.1rem;font-weight:500;border-radius:10px}@media screen and (max-width:750px){code{font-size:.9rem;font-weight:300;border-radius:5px}}blockquote{width:100%;padding:5px;box-sizing:border-box}table{padding:10px 0;width:100%;border-spacing:0}table th{border:1px solid silver}table td,table th{padding:5px 0;box-sizing:border-box}table td{border:.5px solid silver;border-top:none}.base-shadow{background:#303131;box-shadow:10px 10px 20px #252626,-10px -10px 20px #3b3c3c}.light-shadow{background:#fff;box-shadow:12px 12px 35px #c9c9c9,-12px -12px 35px #fff}.dark .show{background:#303131;color:#b3b3b3}.dark blockquote,.dark code{background:#303131;box-shadow:10px 10px 20px #252626,-10px -10px 20px #3b3c3c}.dark blockquote{border-left:5px solid #0c6379}.light .show{background:#fff;color:#2b2b2b}.light blockquote,.light code{background:#fff;box-shadow:12px 12px 35px #c9c9c9,-12px -12px 35px #fff}.light blockquote{border-left:5px solid #0c6379}*{margin:0;padding:0}#editor{font-family:Avenir,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;display:flex}#editor .show{width:100%;max-width:1024px;max-height:100vh;overflow-y:auto;padding:10px;box-sizing:border-box}", ""]);
+// Exports
+module.exports = exports;
 
 
 /***/ }),
@@ -21318,13 +18940,6 @@ module.exports = ruleslanguage;
 
 /***/ }),
 
-/***/ "8bbf":
-/***/ (function(module, exports) {
-
-module.exports = Vue;
-
-/***/ }),
-
 /***/ "8ca5":
 /***/ (function(module, exports) {
 
@@ -21926,18 +19541,6 @@ function xml(hljs) {
 
 module.exports = xml;
 
-
-/***/ }),
-
-/***/ "8fc7":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_3_node_modules_less_loader_dist_cjs_js_ref_10_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_less_shadow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("02cd");
-/* harmony import */ var _node_modules_vue_style_loader_index_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_3_node_modules_less_loader_dist_cjs_js_ref_10_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_less_shadow__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_3_node_modules_less_loader_dist_cjs_js_ref_10_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_less_shadow__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_3_node_modules_less_loader_dist_cjs_js_ref_10_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_less_shadow__WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_vue_style_loader_index_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_3_node_modules_less_loader_dist_cjs_js_ref_10_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_less_shadow__WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_vue_style_loader_index_js_ref_10_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_10_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_10_oneOf_1_3_node_modules_less_loader_dist_cjs_js_ref_10_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_less_shadow__WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -30465,6 +28068,21 @@ module.exports = mel;
 
 /***/ }),
 
+/***/ "bc9f":
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__("7d79");
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__("499e").default
+var update = add("97192934", content, true, {"sourceMap":false,"shadowMode":false});
+
+/***/ }),
+
 /***/ "bd88":
 /***/ (function(module, exports) {
 
@@ -36813,7 +34431,2240 @@ function actionscript(hljs) {
 module.exports = actionscript;
 
 
+/***/ }),
+
+/***/ "fb15":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
+// This file is imported into lib/wc client bundles.
+
+if (typeof window !== 'undefined') {
+  var currentScript = window.document.currentScript
+  if (true) {
+    var getCurrentScript = __webpack_require__("8875")
+    currentScript = getCurrentScript()
+
+    // for backward compatibility, because previously we directly included the polyfill
+    if (!('currentScript' in document)) {
+      Object.defineProperty(document, 'currentScript', { get: getCurrentScript })
+    }
+  }
+
+  var src = currentScript && currentScript.src.match(/(.+\/)[^/]+\.js(\?.*)?$/)
+  if (src) {
+    __webpack_require__.p = src[1] // eslint-disable-line
+  }
+}
+
+// Indicate to webpack that this file can be concatenated
+/* harmony default export */ var setPublicPath = (null);
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"d8f0d1e0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=template&id=66aa6056&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.theme,attrs:{"id":"editor"}},[_c('Editor',{ref:"myqiniuEditorOldDeepComponent",attrs:{"customStyle":_vm.customStyle,"domain":_vm.domain},on:{"getToken":_vm.getToken},model:{value:(_vm.htmlInfo),callback:function ($$v) {_vm.htmlInfo=$$v},expression:"htmlInfo"}}),_c('div',{staticClass:"show",style:(_vm.customStyle),domProps:{"innerHTML":_vm._s(_vm.htmlInfo)}})],1)}
+var staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/App.vue?vue&type=template&id=66aa6056&
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"d8f0d1e0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Editor.vue?vue&type=template&id=89218b56&scoped=true&
+var Editorvue_type_template_id_89218b56_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"editor-content"},[_c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.info),expression:"info"}],ref:"textarea",staticClass:"area",style:(_vm.customStyle),attrs:{"autofocus":"","placeholder":"使用markdown语法编辑内容"},domProps:{"value":(_vm.info)},on:{"keyup":_vm.changeInfo,"change":_vm.changeInfo,"drop":function($event){$event.preventDefault();return _vm.dragFile($event)},"input":function($event){if($event.target.composing){ return; }_vm.info=$event.target.value}}})])}
+var Editorvue_type_template_id_89218b56_scoped_true_staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/components/Editor.vue?vue&type=template&id=89218b56&scoped=true&
+
+// EXTERNAL MODULE: ./node_modules/marked/lib/marked.js
+var marked = __webpack_require__("0e54");
+var marked_default = /*#__PURE__*/__webpack_require__.n(marked);
+
+// EXTERNAL MODULE: ./node_modules/highlight.js/lib/index.js
+var lib = __webpack_require__("1487");
+var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
+
+// EXTERNAL MODULE: ./node_modules/spark-md5/spark-md5.js
+var spark_md5 = __webpack_require__("69a0");
+var spark_md5_default = /*#__PURE__*/__webpack_require__.n(spark_md5);
+
+// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/base64.js
+/* eslint-disable */
+function utf8Encode(argString) {
+    // http://kevin.vanzonneveld.net
+    // +   original by: Webtoolkit.info (http://www.webtoolkit.info/)
+    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // +   improved by: sowberry
+    // +    tweaked by: Jack
+    // +   bugfixed by: Onno Marsman
+    // +   improved by: Yves Sucaet
+    // +   bugfixed by: Onno Marsman
+    // +   bugfixed by: Ulrich
+    // +   bugfixed by: Rafal Kukawski
+    // +   improved by: kirilloid
+    // +   bugfixed by: kirilloid
+    // *     example 1: this.utf8Encode('Kevin van Zonneveld')
+    // *     returns 1: 'Kevin van Zonneveld'
+    if (argString === null || typeof argString === 'undefined') {
+        return '';
+    }
+    var string = argString + ''; // .replace(/\r\n/g, '\n').replace(/\r/g, '\n')
+    var utftext = '', start, end, stringl = 0;
+    start = end = 0;
+    stringl = string.length;
+    for (var n = 0; n < stringl; n++) {
+        var c1 = string.charCodeAt(n);
+        var enc = null;
+        if (c1 < 128) {
+            end++;
+        }
+        else if (c1 > 127 && c1 < 2048) {
+            enc = String.fromCharCode((c1 >> 6) | 192, (c1 & 63) | 128);
+        }
+        else if ((c1 & 0xf800 ^ 0xd800) > 0) {
+            enc = String.fromCharCode((c1 >> 12) | 224, ((c1 >> 6) & 63) | 128, (c1 & 63) | 128);
+        }
+        else {
+            // surrogate pairs
+            if ((c1 & 0xfc00 ^ 0xd800) > 0) {
+                throw new RangeError('Unmatched trail surrogate at ' + n);
+            }
+            var c2 = string.charCodeAt(++n);
+            if ((c2 & 0xfc00 ^ 0xdc00) > 0) {
+                throw new RangeError('Unmatched lead surrogate at ' + (n - 1));
+            }
+            c1 = ((c1 & 0x3ff) << 10) + (c2 & 0x3ff) + 0x10000;
+            enc = String.fromCharCode((c1 >> 18) | 240, ((c1 >> 12) & 63) | 128, ((c1 >> 6) & 63) | 128, (c1 & 63) | 128);
+        }
+        if (enc !== null) {
+            if (end > start) {
+                utftext += string.slice(start, end);
+            }
+            utftext += enc;
+            start = end = n + 1;
+        }
+    }
+    if (end > start) {
+        utftext += string.slice(start, stringl);
+    }
+    return utftext;
+}
+function base64Encode(data) {
+    // http://kevin.vanzonneveld.net
+    // +   original by: Tyler Akins (http://rumkin.com)
+    // +   improved by: Bayron Guevara
+    // +   improved by: Thunder.m
+    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // +   bugfixed by: Pellentesque Malesuada
+    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // -    depends on: this.utf8Encode
+    // *     example 1: this.base64Encode('Kevin van Zonneveld')
+    // *     returns 1: 'S2V2aW4gdmFuIFpvbm5ldmVsZA=='
+    // mozilla has this native
+    // - but breaks in 2.0.0.12!
+    // if (typeof this.window['atob'] == 'function') {
+    //    return atob(data)
+    // }
+    var b64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+    var o1, o2, o3, h1, h2, h3, h4, bits, i = 0, ac = 0, enc = '', tmp_arr = [];
+    if (!data) {
+        return data;
+    }
+    data = utf8Encode(data + '');
+    do {
+        // pack three octets into four hexets
+        o1 = data.charCodeAt(i++);
+        o2 = data.charCodeAt(i++);
+        o3 = data.charCodeAt(i++);
+        bits = (o1 << 16) | (o2 << 8) | o3;
+        h1 = (bits >> 18) & 0x3f;
+        h2 = (bits >> 12) & 0x3f;
+        h3 = (bits >> 6) & 0x3f;
+        h4 = bits & 0x3f;
+        // use hexets to index into b64, and append result to encoded string
+        tmp_arr[ac++] =
+            b64.charAt(h1) + b64.charAt(h2) + b64.charAt(h3) + b64.charAt(h4);
+    } while (i < data.length);
+    enc = tmp_arr.join('');
+    switch (data.length % 3) {
+        case 1:
+            enc = enc.slice(0, -2) + '==';
+            break;
+        case 2:
+            enc = enc.slice(0, -1) + '=';
+            break;
+    }
+    return enc;
+}
+function base64Decode(data) {
+    // http://kevin.vanzonneveld.net
+    // +   original by: Tyler Akins (http://rumkin.com)
+    // +   improved by: Thunder.m
+    // +      input by: Aman Gupta
+    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // +   bugfixed by: Onno Marsman
+    // +   bugfixed by: Pellentesque Malesuada
+    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // +      input by: Brett Zamir (http://brett-zamir.me)
+    // +   bugfixed by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // *     example 1: base64_decode('S2V2aW4gdmFuIFpvbm5ldmVsZA==')
+    // *     returns 1: 'Kevin van Zonneveld'
+    // mozilla has this native
+    // - but breaks in 2.0.0.12!
+    // if (typeof this.window['atob'] == 'function') {
+    //    return atob(data)
+    // }
+    var b64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+    var o1, o2, o3, h1, h2, h3, h4, bits, i = 0, ac = 0, dec = '', tmp_arr = [];
+    if (!data) {
+        return data;
+    }
+    data += '';
+    do { // unpack four hexets into three octets using index points in b64
+        h1 = b64.indexOf(data.charAt(i++));
+        h2 = b64.indexOf(data.charAt(i++));
+        h3 = b64.indexOf(data.charAt(i++));
+        h4 = b64.indexOf(data.charAt(i++));
+        bits = h1 << 18 | h2 << 12 | h3 << 6 | h4;
+        o1 = bits >> 16 & 0xff;
+        o2 = bits >> 8 & 0xff;
+        o3 = bits & 0xff;
+        if (h3 === 64) {
+            tmp_arr[ac++] = String.fromCharCode(o1);
+        }
+        else if (h4 === 64) {
+            tmp_arr[ac++] = String.fromCharCode(o1, o2);
+        }
+        else {
+            tmp_arr[ac++] = String.fromCharCode(o1, o2, o3);
+        }
+    } while (i < data.length);
+    dec = tmp_arr.join('');
+    return dec;
+}
+function urlSafeBase64Encode(v) {
+    v = base64Encode(v);
+    return v.replace(/\//g, '_').replace(/\+/g, '-');
+}
+function urlSafeBase64Decode(v) {
+    v = v.replace(/_/g, '/').replace(/-/g, '+');
+    return base64Decode(v);
+}
+//# sourceMappingURL=base64.js.map
+// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/utils.js
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+var MB = Math.pow(1024, 2);
+// 文件分块
+function getChunks(file, blockSize) {
+    var chunkByteSize = blockSize * MB; // 转换为字节
+    // 如果 chunkByteSize 比文件大，则直接取文件的大小
+    if (chunkByteSize > file.size) {
+        chunkByteSize = file.size;
+    }
+    else {
+        // 因为最多 10000 chunk，所以如果 chunkSize 不符合则把每片 chunk 大小扩大两倍
+        while (file.size > chunkByteSize * 10000) {
+            chunkByteSize *= 2;
+        }
+    }
+    var chunks = [];
+    var count = Math.ceil(file.size / chunkByteSize);
+    for (var i = 0; i < count; i++) {
+        var chunk = file.slice(chunkByteSize * i, i === count - 1 ? file.size : chunkByteSize * (i + 1));
+        chunks.push(chunk);
+    }
+    return chunks;
+}
+function isMetaDataValid(params) {
+    return Object.keys(params).every(function (key) { return key.indexOf('x-qn-meta-') === 0; });
+}
+function isCustomVarsValid(params) {
+    return Object.keys(params).every(function (key) { return key.indexOf('x:') === 0; });
+}
+function sum(list) {
+    return list.reduce(function (data, loaded) { return data + loaded; }, 0);
+}
+function setLocalFileInfo(localKey, info) {
+    try {
+        localStorage.setItem(localKey, JSON.stringify(info));
+    }
+    catch (err) {
+        if (window.console && window.console.warn) {
+            // eslint-disable-next-line no-console
+            console.warn('setLocalFileInfo failed');
+        }
+    }
+}
+function createLocalKey(name, key, size) {
+    var localKey = key == null ? '_' : "_key_" + key + "_";
+    return "qiniu_js_sdk_upload_file_name_" + name + localKey + "size_" + size;
+}
+function removeLocalFileInfo(localKey) {
+    try {
+        localStorage.removeItem(localKey);
+    }
+    catch (err) {
+        if (window.console && window.console.warn) {
+            // eslint-disable-next-line no-console
+            console.warn('removeLocalFileInfo failed');
+        }
+    }
+}
+function getLocalFileInfo(localKey) {
+    try {
+        var localInfo = localStorage.getItem(localKey);
+        return localInfo ? JSON.parse(localInfo) : null;
+    }
+    catch (err) {
+        if (window.console && window.console.warn) {
+            // eslint-disable-next-line no-console
+            console.warn('getLocalFileInfo failed');
+        }
+        return null;
+    }
+}
+function getAuthHeaders(token) {
+    var auth = 'UpToken ' + token;
+    return { Authorization: auth };
+}
+function getHeadersForChunkUpload(token) {
+    var header = getAuthHeaders(token);
+    return __assign({ 'content-type': 'application/octet-stream' }, header);
+}
+function getHeadersForMkFile(token) {
+    var header = getAuthHeaders(token);
+    return __assign({ 'content-type': 'application/json' }, header);
+}
+function createXHR() {
+    if (window.XMLHttpRequest) {
+        return new XMLHttpRequest();
+    }
+    return window.ActiveXObject('Microsoft.XMLHTTP');
+}
+function computeMd5(data) {
+    return __awaiter(this, void 0, void 0, function () {
+        var buffer, spark;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, readAsArrayBuffer(data)];
+                case 1:
+                    buffer = _a.sent();
+                    spark = new spark_md5_default.a.ArrayBuffer();
+                    spark.append(buffer);
+                    return [2 /*return*/, spark.end()];
+            }
+        });
+    });
+}
+function readAsArrayBuffer(data) {
+    return new Promise(function (resolve, reject) {
+        var reader = new FileReader();
+        // evt 类型目前存在问题 https://github.com/Microsoft/TypeScript/issues/4163
+        reader.onload = function (evt) {
+            if (evt.target) {
+                var body = evt.target.result;
+                resolve(body);
+            }
+            else {
+                reject(new Error('progress event target is undefined'));
+            }
+        };
+        reader.onerror = function () {
+            reject(new Error('fileReader read failed'));
+        };
+        reader.readAsArrayBuffer(data);
+    });
+}
+function request(url, options) {
+    return new Promise(function (resolve, reject) {
+        var xhr = createXHR();
+        xhr.open(options.method, url);
+        if (options.onCreate) {
+            options.onCreate(xhr);
+        }
+        if (options.headers) {
+            var headers_1 = options.headers;
+            Object.keys(headers_1).forEach(function (k) {
+                xhr.setRequestHeader(k, headers_1[k]);
+            });
+        }
+        xhr.upload.addEventListener('progress', function (evt) {
+            if (evt.lengthComputable && options.onProgress) {
+                options.onProgress({
+                    loaded: evt.loaded,
+                    total: evt.total
+                });
+            }
+        });
+        xhr.onreadystatechange = function () {
+            var responseText = xhr.responseText;
+            if (xhr.readyState !== 4) {
+                return;
+            }
+            var reqId = xhr.getResponseHeader('x-reqId') || '';
+            if (xhr.status !== 200) {
+                var message = "xhr request failed, code: " + xhr.status;
+                if (responseText) {
+                    message += " response: " + responseText;
+                }
+                reject({
+                    code: xhr.status,
+                    message: message,
+                    reqId: reqId,
+                    isRequestError: true
+                });
+                return;
+            }
+            try {
+                resolve({
+                    data: JSON.parse(responseText),
+                    reqId: reqId
+                });
+            }
+            catch (err) {
+                reject(err);
+            }
+        };
+        xhr.send(options.body);
+    });
+}
+function getPortFromUrl(url) {
+    if (url && url.match) {
+        var groups = url.match(/(^https?)/);
+        if (!groups) {
+            return '';
+        }
+        var type = groups[1];
+        groups = url.match(/^https?:\/\/([^:^/]*):(\d*)/);
+        if (groups) {
+            return groups[2];
+        }
+        if (type === 'http') {
+            return '80';
+        }
+        return '443';
+    }
+    return '';
+}
+function getDomainFromUrl(url) {
+    if (url && url.match) {
+        var groups = url.match(/^https?:\/\/([^:^/]*)/);
+        return groups ? groups[1] : '';
+    }
+    return '';
+}
+function getPutPolicy(token) {
+    var segments = token.split(':');
+    // token 构造的差异参考：https://github.com/qbox/product/blob/master/kodo/auths/UpToken.md#admin-uptoken-authorization
+    var ak = segments.length > 3 ? segments[1] : segments[0];
+    var putPolicy = JSON.parse(urlSafeBase64Decode(segments[segments.length - 1]));
+    return {
+        ak: ak,
+        bucket: putPolicy.scope.split(':')[0]
+    };
+}
+function createObjectURL(file) {
+    var URL = window.URL || window.webkitURL || window.mozURL;
+    return URL.createObjectURL(file);
+}
+function getTransform(image, orientation) {
+    var width = image.width, height = image.height;
+    switch (orientation) {
+        case 1:
+            // default
+            return {
+                width: width,
+                height: height,
+                matrix: [1, 0, 0, 1, 0, 0]
+            };
+        case 2:
+            // horizontal flip
+            return {
+                width: width,
+                height: height,
+                matrix: [-1, 0, 0, 1, width, 0]
+            };
+        case 3:
+            // 180° rotated
+            return {
+                width: width,
+                height: height,
+                matrix: [-1, 0, 0, -1, width, height]
+            };
+        case 4:
+            // vertical flip
+            return {
+                width: width,
+                height: height,
+                matrix: [1, 0, 0, -1, 0, height]
+            };
+        case 5:
+            // vertical flip + -90° rotated
+            return {
+                width: height,
+                height: width,
+                matrix: [0, 1, 1, 0, 0, 0]
+            };
+        case 6:
+            // -90° rotated
+            return {
+                width: height,
+                height: width,
+                matrix: [0, 1, -1, 0, height, 0]
+            };
+        case 7:
+            // horizontal flip + -90° rotate
+            return {
+                width: height,
+                height: width,
+                matrix: [0, -1, -1, 0, height, width]
+            };
+        case 8:
+            // 90° rotated
+            return {
+                width: height,
+                height: width,
+                matrix: [0, -1, 1, 0, 0, width]
+            };
+        default:
+            throw new Error("orientation " + orientation + " is unavailable");
+    }
+}
+//# sourceMappingURL=utils.js.map
+// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/statisticsLog.js
+
+var statisticsLog_StatisticsLogger = /** @class */ (function () {
+    function StatisticsLogger() {
+    }
+    StatisticsLogger.prototype.log = function (info, token) {
+        var logString = Object.values(info).join(',');
+        this.send(logString, token, 0);
+    };
+    StatisticsLogger.prototype.send = function (logString, token, retryCount) {
+        var _this = this;
+        var xhr = createXHR();
+        xhr.open('POST', 'https://uplog.qbox.me/log/3');
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('Authorization', 'UpToken ' + token);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status !== 200 && ++retryCount <= 3) {
+                _this.send(logString, token, retryCount);
+            }
+        };
+        xhr.send(logString);
+    };
+    return StatisticsLogger;
+}());
+/* harmony default export */ var statisticsLog = (statisticsLog_StatisticsLogger);
+//# sourceMappingURL=statisticsLog.js.map
+// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/pool.js
+var Pool = /** @class */ (function () {
+    function Pool(runTask, limit) {
+        this.runTask = runTask;
+        this.limit = limit;
+        this.queue = [];
+        this.processing = [];
+    }
+    Pool.prototype.enqueue = function (task) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.queue.push({
+                task: task,
+                resolve: resolve,
+                reject: reject
+            });
+            _this.check();
+        });
+    };
+    Pool.prototype.run = function (item) {
+        var _this = this;
+        this.queue = this.queue.filter(function (v) { return v !== item; });
+        this.processing.push(item);
+        this.runTask(item.task).then(function () {
+            _this.processing = _this.processing.filter(function (v) { return v !== item; });
+            item.resolve();
+            _this.check();
+        }, function (err) { return item.reject(err); });
+    };
+    Pool.prototype.check = function () {
+        var _this = this;
+        var processingNum = this.processing.length;
+        var availableNum = this.limit - processingNum;
+        this.queue.slice(0, availableNum).forEach(function (item) {
+            _this.run(item);
+        });
+    };
+    return Pool;
+}());
+
+//# sourceMappingURL=pool.js.map
+// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/config.js
+var config_a;
+/** 上传区域 */
+var region = {
+    z0: 'z0',
+    z1: 'z1',
+    z2: 'z2',
+    na0: 'na0',
+    as0: 'as0'
+};
+/** 上传区域对应的 host */
+var regionUphostMap = (config_a = {},
+    config_a[region.z0] = {
+        srcUphost: 'up.qiniup.com',
+        cdnUphost: 'upload.qiniup.com'
+    },
+    config_a[region.z1] = {
+        srcUphost: 'up-z1.qiniup.com',
+        cdnUphost: 'upload-z1.qiniup.com'
+    },
+    config_a[region.z2] = {
+        srcUphost: 'up-z2.qiniup.com',
+        cdnUphost: 'upload-z2.qiniup.com'
+    },
+    config_a[region.na0] = {
+        srcUphost: 'up-na0.qiniup.com',
+        cdnUphost: 'upload-na0.qiniup.com'
+    },
+    config_a[region.as0] = {
+        srcUphost: 'up-as0.qiniup.com',
+        cdnUphost: 'upload-as0.qiniup.com'
+    },
+    config_a);
+//# sourceMappingURL=config.js.map
+// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/api.js
+var api_assign = (undefined && undefined.__assign) || function () {
+    api_assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return api_assign.apply(this, arguments);
+};
+var api_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var api_generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+function getUpHosts(token, protocol) {
+    return api_awaiter(this, void 0, void 0, function () {
+        var putPolicy, url;
+        return api_generator(this, function (_a) {
+            putPolicy = getPutPolicy(token);
+            url = protocol + '//api.qiniu.com/v2/query?ak=' + putPolicy.ak + '&bucket=' + putPolicy.bucket;
+            return [2 /*return*/, request(url, { method: 'GET' })];
+        });
+    });
+}
+/** 获取上传url */
+function getUploadUrl(config, token) {
+    return api_awaiter(this, void 0, void 0, function () {
+        var protocol, upHosts, host, res, hosts;
+        return api_generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    protocol = config.upprotocol;
+                    if (config.uphost) {
+                        return [2 /*return*/, protocol + "//" + config.uphost];
+                    }
+                    if (config.region) {
+                        upHosts = regionUphostMap[config.region];
+                        host = config.useCdnDomain ? upHosts.cdnUphost : upHosts.srcUphost;
+                        return [2 /*return*/, protocol + "//" + host];
+                    }
+                    return [4 /*yield*/, getUpHosts(token, protocol)];
+                case 1:
+                    res = _a.sent();
+                    hosts = res.data.up.acc.main;
+                    return [2 /*return*/, protocol + "//" + hosts[0]];
+            }
+        });
+    });
+}
+/**
+ * @param bucket 空间名
+ * @param key 目标文件名
+ * @param uploadInfo 上传信息
+ */
+function getBaseUrl(bucket, key, uploadInfo) {
+    var url = uploadInfo.url, id = uploadInfo.id;
+    return url + "/buckets/" + bucket + "/objects/" + (key != null ? urlSafeBase64Encode(key) : '~') + "/uploads/" + id;
+}
+/**
+ * @param token 上传鉴权凭证
+ * @param bucket 上传空间
+ * @param key 目标文件名
+ * @param uploadUrl 上传地址
+ */
+function initUploadParts(token, bucket, key, uploadUrl) {
+    var url = uploadUrl + "/buckets/" + bucket + "/objects/" + (key != null ? urlSafeBase64Encode(key) : '~') + "/uploads";
+    return request(url, {
+        method: 'POST',
+        headers: getAuthHeaders(token)
+    });
+}
+/**
+ * @param token 上传鉴权凭证
+ * @param index 当前 chunk 的索引
+ * @param uploadInfo 上传信息
+ * @param options 请求参数
+ */
+function uploadChunk(token, key, index, uploadInfo, options) {
+    var bucket = getPutPolicy(token).bucket;
+    var url = getBaseUrl(bucket, key, uploadInfo) + ("/" + index);
+    return request(url, api_assign(api_assign({}, options), { method: 'PUT', headers: getHeadersForChunkUpload(token) }));
+}
+/**
+ * @param token 上传鉴权凭证
+ * @param key 目标文件名
+ * @param uploadInfo 上传信息
+ * @param options 请求参数
+ */
+function uploadComplete(token, key, uploadInfo, options) {
+    var bucket = getPutPolicy(token).bucket;
+    var url = getBaseUrl(bucket, key, uploadInfo);
+    return request(url, api_assign(api_assign({}, options), { method: 'POST', headers: getHeadersForMkFile(token) }));
+}
+/**
+ * @param token 上传鉴权凭证
+ * @param key 目标文件名
+ * @param uploadInfo 上传信息
+ */
+function deleteUploadedChunks(token, key, uploadinfo) {
+    var bucket = getPutPolicy(token).bucket;
+    var url = getBaseUrl(bucket, key, uploadinfo);
+    return request(url, {
+        method: 'DELETE',
+        headers: getAuthHeaders(token)
+    });
+}
+//# sourceMappingURL=api.js.map
+// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/upload/base.js
+var base_assign = (undefined && undefined.__assign) || function () {
+    base_assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return base_assign.apply(this, arguments);
+};
+var base_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var base_generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+var DEFAULT_CHUNK_SIZE = 4; // 单位 MB
+var GB = Math.pow(1024, 3);
+var base_Base = /** @class */ (function () {
+    function Base(options, handlers, statisticsLogger) {
+        this.statisticsLogger = statisticsLogger;
+        this.xhrList = [];
+        this.aborted = false;
+        this.retryCount = 0;
+        this.config = base_assign({ useCdnDomain: true, disableStatisticsReport: false, retryCount: 3, checkByMD5: false, uphost: '', upprotocol: 'https:', forceDirect: false, chunkSize: DEFAULT_CHUNK_SIZE, concurrentRequestLimit: 3 }, options.config);
+        this.putExtra = base_assign({ fname: '' }, options.putExtra);
+        this.file = options.file;
+        this.key = options.key;
+        this.token = options.token;
+        this.onData = handlers.onData;
+        this.onError = handlers.onError;
+        this.onComplete = handlers.onComplete;
+        try {
+            this.bucket = getPutPolicy(this.token).bucket;
+        }
+        catch (e) {
+            this.onError(e);
+        }
+    }
+    Base.prototype.putFile = function () {
+        return base_awaiter(this, void 0, void 0, function () {
+            var err, err, err, _a, result, err_1, reqId, code, needRetry, notReachRetryCount;
+            return base_generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        this.aborted = false;
+                        if (!this.putExtra.fname) {
+                            this.putExtra.fname = this.file.name;
+                        }
+                        if (this.file.size > 10000 * GB) {
+                            err = new Error('file size exceed maximum value 10000G');
+                            this.onError(err);
+                            throw err;
+                        }
+                        if (this.putExtra.customVars) {
+                            if (!isCustomVarsValid(this.putExtra.customVars)) {
+                                err = new Error('customVars key should start width x:');
+                                this.onError(err);
+                                throw err;
+                            }
+                        }
+                        if (this.putExtra.metadata) {
+                            if (!isMetaDataValid(this.putExtra.metadata)) {
+                                err = new Error('metadata key should start with x-qn-meta-');
+                                this.onError(err);
+                                throw err;
+                            }
+                        }
+                        _b.label = 1;
+                    case 1:
+                        _b.trys.push([1, 4, , 5]);
+                        _a = this;
+                        return [4 /*yield*/, getUploadUrl(this.config, this.token)];
+                    case 2:
+                        _a.uploadUrl = _b.sent();
+                        this.uploadAt = new Date().getTime();
+                        return [4 /*yield*/, this.run()];
+                    case 3:
+                        result = _b.sent();
+                        this.onComplete(result.data);
+                        if (!this.config.disableStatisticsReport) {
+                            this.sendLog(result.reqId, 200);
+                        }
+                        return [2 /*return*/, result];
+                    case 4:
+                        err_1 = _b.sent();
+                        this.clear();
+                        if (err_1.isRequestError && !this.config.disableStatisticsReport) {
+                            reqId = this.aborted ? '' : err_1.reqId;
+                            code = this.aborted ? -2 : err_1.code;
+                            this.sendLog(reqId, code);
+                        }
+                        needRetry = err_1.isRequestError && err_1.code === 0 && !this.aborted;
+                        notReachRetryCount = ++this.retryCount <= this.config.retryCount;
+                        // 以下条件满足其中之一则会进行重新上传：
+                        // 1. 满足 needRetry 的条件且 retryCount 不为 0
+                        // 2. uploadId 无效时在 resume 里会清除本地数据，并且这里触发重新上传
+                        if (needRetry && notReachRetryCount || err_1.code === 612) {
+                            return [2 /*return*/, this.putFile()];
+                        }
+                        this.onError(err_1);
+                        throw err_1;
+                    case 5: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Base.prototype.clear = function () {
+        this.xhrList.forEach(function (xhr) { return xhr.abort(); });
+        this.xhrList = [];
+    };
+    Base.prototype.stop = function () {
+        this.clear();
+        this.aborted = true;
+    };
+    Base.prototype.addXhr = function (xhr) {
+        this.xhrList.push(xhr);
+    };
+    Base.prototype.sendLog = function (reqId, code) {
+        this.statisticsLogger.log({
+            code: code,
+            reqId: reqId,
+            host: getDomainFromUrl(this.uploadUrl),
+            remoteIp: '',
+            port: getPortFromUrl(this.uploadUrl),
+            duration: (new Date().getTime() - this.uploadAt) / 1000,
+            time: Math.floor(this.uploadAt / 1000),
+            bytesSent: this.progress ? this.progress.total.loaded : 0,
+            upType: 'jssdk-h5',
+            size: this.file.size
+        }, this.token);
+    };
+    Base.prototype.getProgressInfoItem = function (loaded, size) {
+        return {
+            loaded: loaded,
+            size: size,
+            percent: loaded / size * 100
+        };
+    };
+    return Base;
+}());
+/* harmony default export */ var base = (base_Base);
+//# sourceMappingURL=base.js.map
+// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/upload/resume.js
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var resume_assign = (undefined && undefined.__assign) || function () {
+    resume_assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return resume_assign.apply(this, arguments);
+};
+var resume_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var resume_generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+/** 是否为正整数 */
+function isPositiveInteger(n) {
+    var re = /^[1-9]\d*$/;
+    return re.test(String(n));
+}
+var resume_Resume = /** @class */ (function (_super) {
+    __extends(Resume, _super);
+    function Resume() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Resume.prototype.run = function () {
+        return resume_awaiter(this, void 0, void 0, function () {
+            var pool, uploadChunks, result;
+            var _this = this;
+            return resume_generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!this.config.chunkSize || !isPositiveInteger(this.config.chunkSize)) {
+                            throw new Error('chunkSize must be a positive integer');
+                        }
+                        if (this.config.chunkSize > 1024) {
+                            throw new Error('chunkSize maximum value is 1024');
+                        }
+                        return [4 /*yield*/, this.initBeforeUploadChunks()];
+                    case 1:
+                        _a.sent();
+                        pool = new Pool(function (chunkInfo) { return _this.uploadChunk(chunkInfo); }, this.config.concurrentRequestLimit);
+                        uploadChunks = this.chunks.map(function (chunk, index) { return pool.enqueue({ chunk: chunk, index: index }); });
+                        result = Promise.all(uploadChunks).then(function () { return _this.mkFileReq(); });
+                        result.then(function () {
+                            removeLocalFileInfo(_this.getLocalKey());
+                        }, function (err) {
+                            // uploadId 无效，上传参数有误（多由于本地存储信息的 uploadId 失效
+                            if (err.code === 612 || err.code === 400) {
+                                removeLocalFileInfo(_this.getLocalKey());
+                            }
+                        });
+                        return [2 /*return*/, result];
+                }
+            });
+        });
+    };
+    Resume.prototype.uploadChunk = function (chunkInfo) {
+        return resume_awaiter(this, void 0, void 0, function () {
+            var index, chunk, info, shouldCheckMD5, reuseSaved, md5, onProgress, requestOptions, response;
+            var _this = this;
+            return resume_generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        index = chunkInfo.index, chunk = chunkInfo.chunk;
+                        info = this.uploadedList[index];
+                        shouldCheckMD5 = this.config.checkByMD5;
+                        reuseSaved = function () {
+                            _this.updateChunkProgress(chunk.size, index);
+                        };
+                        if (info && !shouldCheckMD5) {
+                            reuseSaved();
+                            return [2 /*return*/];
+                        }
+                        return [4 /*yield*/, computeMd5(chunk)];
+                    case 1:
+                        md5 = _a.sent();
+                        if (info && md5 === info.md5) {
+                            reuseSaved();
+                            return [2 /*return*/];
+                        }
+                        onProgress = function (data) {
+                            _this.updateChunkProgress(data.loaded, index);
+                        };
+                        requestOptions = {
+                            body: chunk,
+                            onProgress: onProgress,
+                            onCreate: function (xhr) { return _this.addXhr(xhr); }
+                        };
+                        return [4 /*yield*/, uploadChunk(this.token, this.key, chunkInfo.index + 1, this.getUploadInfo(), requestOptions)
+                            // 在某些浏览器环境下，xhr 的 progress 事件无法被触发，progress 为 null，这里在每次分片上传完成后都手动更新下 progress
+                        ];
+                    case 2:
+                        response = _a.sent();
+                        // 在某些浏览器环境下，xhr 的 progress 事件无法被触发，progress 为 null，这里在每次分片上传完成后都手动更新下 progress
+                        onProgress({
+                            loaded: chunk.size,
+                            total: chunk.size
+                        });
+                        this.uploadedList[index] = {
+                            etag: response.data.etag,
+                            md5: response.data.md5,
+                            size: chunk.size
+                        };
+                        setLocalFileInfo(this.getLocalKey(), {
+                            id: this.uploadId,
+                            data: this.uploadedList
+                        });
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Resume.prototype.mkFileReq = function () {
+        return resume_awaiter(this, void 0, void 0, function () {
+            var data, result;
+            var _this = this;
+            return resume_generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        data = resume_assign(resume_assign(resume_assign({ parts: this.uploadedList.map(function (value, index) { return ({
+                                etag: value.etag,
+                                partNumber: index + 1
+                            }); }), fname: this.putExtra.fname }, this.putExtra.mimeType && { mimeType: this.putExtra.mimeType }), this.putExtra.customVars && { customVars: this.putExtra.customVars }), this.putExtra.metadata && { metadata: this.putExtra.metadata });
+                        return [4 /*yield*/, uploadComplete(this.token, this.key, this.getUploadInfo(), {
+                                onCreate: function (xhr) { return _this.addXhr(xhr); },
+                                body: JSON.stringify(data)
+                            })];
+                    case 1:
+                        result = _a.sent();
+                        this.updateMkFileProgress(1);
+                        return [2 /*return*/, result];
+                }
+            });
+        });
+    };
+    Resume.prototype.initBeforeUploadChunks = function () {
+        return resume_awaiter(this, void 0, void 0, function () {
+            var localInfo, res;
+            return resume_generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        localInfo = getLocalFileInfo(this.getLocalKey());
+                        if (!!localInfo) return [3 /*break*/, 2];
+                        // 防止本地信息已被破坏，初始化时 clear 一下
+                        removeLocalFileInfo(this.getLocalKey());
+                        return [4 /*yield*/, initUploadParts(this.token, this.bucket, this.key, this.uploadUrl)];
+                    case 1:
+                        res = _a.sent();
+                        this.uploadId = res.data.uploadId;
+                        this.uploadedList = [];
+                        return [3 /*break*/, 3];
+                    case 2:
+                        this.uploadId = localInfo.id;
+                        this.uploadedList = localInfo.data;
+                        _a.label = 3;
+                    case 3:
+                        this.chunks = getChunks(this.file, this.config.chunkSize);
+                        this.loaded = {
+                            mkFileProgress: 0,
+                            chunks: this.chunks.map(function (_) { return 0; })
+                        };
+                        this.notifyResumeProgress();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Resume.prototype.getUploadInfo = function () {
+        return {
+            id: this.uploadId,
+            url: this.uploadUrl
+        };
+    };
+    Resume.prototype.getLocalKey = function () {
+        return createLocalKey(this.file.name, this.key, this.file.size);
+    };
+    Resume.prototype.updateChunkProgress = function (loaded, index) {
+        this.loaded.chunks[index] = loaded;
+        this.notifyResumeProgress();
+    };
+    Resume.prototype.updateMkFileProgress = function (progress) {
+        this.loaded.mkFileProgress = progress;
+        this.notifyResumeProgress();
+    };
+    Resume.prototype.notifyResumeProgress = function () {
+        var _this = this;
+        this.progress = {
+            total: this.getProgressInfoItem(sum(this.loaded.chunks) + this.loaded.mkFileProgress, this.file.size + 1 // 防止在 complete 未调用的时候进度显示 100%
+            ),
+            chunks: this.chunks.map(function (chunk, index) { return (_this.getProgressInfoItem(_this.loaded.chunks[index], chunk.size)); }),
+            uploadInfo: {
+                id: this.uploadId,
+                url: this.uploadUrl
+            }
+        };
+        this.onData(this.progress);
+    };
+    return Resume;
+}(base));
+/* harmony default export */ var resume = (resume_Resume);
+//# sourceMappingURL=resume.js.map
+// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/upload/direct.js
+var direct_extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var direct_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var direct_generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+var direct_Direct = /** @class */ (function (_super) {
+    direct_extends(Direct, _super);
+    function Direct() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Direct.prototype.run = function () {
+        return direct_awaiter(this, void 0, void 0, function () {
+            var formData, customVars_1, result;
+            var _this = this;
+            return direct_generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        formData = new FormData();
+                        formData.append('file', this.file);
+                        formData.append('token', this.token);
+                        if (this.key != null) {
+                            formData.append('key', this.key);
+                        }
+                        formData.append('fname', this.putExtra.fname);
+                        if (this.putExtra.customVars) {
+                            customVars_1 = this.putExtra.customVars;
+                            Object.keys(customVars_1).forEach(function (key) { return formData.append(key, customVars_1[key].toString()); });
+                        }
+                        return [4 /*yield*/, request(this.uploadUrl, {
+                                method: 'POST',
+                                body: formData,
+                                onProgress: function (data) {
+                                    _this.updateDirectProgress(data.loaded, data.total);
+                                },
+                                onCreate: function (xhr) { return _this.addXhr(xhr); }
+                            })];
+                    case 1:
+                        result = _a.sent();
+                        this.finishDirectProgress();
+                        return [2 /*return*/, result];
+                }
+            });
+        });
+    };
+    Direct.prototype.updateDirectProgress = function (loaded, total) {
+        // 当请求未完成时可能进度会达到100，所以total + 1来防止这种情况出现
+        this.progress = { total: this.getProgressInfoItem(loaded, total + 1) };
+        this.onData(this.progress);
+    };
+    Direct.prototype.finishDirectProgress = function () {
+        // 在某些浏览器环境下，xhr 的 progress 事件无法被触发，progress 为 null，这里 fake 下
+        if (!this.progress) {
+            this.progress = { total: this.getProgressInfoItem(this.file.size, this.file.size) };
+            this.onData(this.progress);
+            return;
+        }
+        var total = this.progress.total;
+        this.progress = { total: this.getProgressInfoItem(total.loaded + 1, total.size) };
+        this.onData(this.progress);
+    };
+    return Direct;
+}(base));
+/* harmony default export */ var direct = (direct_Direct);
+//# sourceMappingURL=direct.js.map
+// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/upload/index.js
+
+
+
+
+
+function createUploadManager(options, handlers, statisticsLogger) {
+    if (options.config && options.config.forceDirect) {
+        return new direct(options, handlers, statisticsLogger);
+    }
+    return options.file.size > 4 * MB
+        ? new resume(options, handlers, statisticsLogger)
+        : new direct(options, handlers, statisticsLogger);
+}
+//# sourceMappingURL=index.js.map
+// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/observable.js
+var observable_extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var observable_assign = (undefined && undefined.__assign) || function () {
+    observable_assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return observable_assign.apply(this, arguments);
+};
+/** 表示可清理的资源，比如 Observable 的执行 */
+var Subscription = /** @class */ (function () {
+    function Subscription() {
+        /** 用来标示该 Subscription 是否被取消订阅的标示位 */
+        this.closed = false;
+    }
+    /** 取消 observer 的订阅 */
+    Subscription.prototype.unsubscribe = function () {
+        if (this.closed) {
+            return;
+        }
+        this.closed = true;
+        if (this._unsubscribe) {
+            this._unsubscribe();
+        }
+    };
+    /** 添加一个 tear down 在该 Subscription 的 unsubscribe() 期间调用 */
+    Subscription.prototype.add = function (teardown) {
+        this._unsubscribe = teardown;
+    };
+    return Subscription;
+}());
+/**
+ * 实现 Observer 接口并且继承 Subscription 类，Observer 是消费 Observable 值的公有 API
+ * 所有 Observers 都转化成了 Subscriber，以便提供类似 Subscription 的能力，比如 unsubscribe
+*/
+var Subscriber = /** @class */ (function (_super) {
+    observable_extends(Subscriber, _super);
+    function Subscriber(observerOrNext, error, complete) {
+        var _this = _super.call(this) || this;
+        _this.isStopped = false;
+        if (observerOrNext && typeof observerOrNext === 'object') {
+            _this.destination = observerOrNext;
+        }
+        else {
+            _this.destination = observable_assign(observable_assign(observable_assign({}, observerOrNext && { next: observerOrNext }), error && { error: error }), complete && { complete: complete });
+        }
+        return _this;
+    }
+    Subscriber.prototype.unsubscribe = function () {
+        if (this.closed) {
+            return;
+        }
+        this.isStopped = true;
+        _super.prototype.unsubscribe.call(this);
+    };
+    Subscriber.prototype.next = function (value) {
+        if (!this.isStopped && this.destination.next) {
+            this.destination.next(value);
+        }
+    };
+    Subscriber.prototype.error = function (err) {
+        if (!this.isStopped && this.destination.error) {
+            this.isStopped = true;
+            this.destination.error(err);
+        }
+    };
+    Subscriber.prototype.complete = function (result) {
+        if (!this.isStopped && this.destination.complete) {
+            this.isStopped = true;
+            this.destination.complete(result);
+        }
+    };
+    return Subscriber;
+}(Subscription));
+
+/** 可观察对象，当前的上传事件的集合 */
+var Observable = /** @class */ (function () {
+    function Observable(_subscribe) {
+        this._subscribe = _subscribe;
+    }
+    Observable.prototype.subscribe = function (observerOrNext, error, complete) {
+        var sink = new Subscriber(observerOrNext, error, complete);
+        sink.add(this._subscribe(sink));
+        return sink;
+    };
+    return Observable;
+}());
+
+//# sourceMappingURL=observable.js.map
+// EXTERNAL MODULE: ./node_modules/exif-js/exif.js
+var exif = __webpack_require__("6f45");
+
+// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/compress.js
+var compress_assign = (undefined && undefined.__assign) || function () {
+    compress_assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return compress_assign.apply(this, arguments);
+};
+var compress_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var compress_generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __read = (undefined && undefined.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spread = (undefined && undefined.__spread) || function () {
+    for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
+    return ar;
+};
+
+
+var compress_mimeTypes = {
+    PNG: 'image/png',
+    JPEG: 'image/jpeg',
+    WEBP: 'image/webp',
+    BMP: 'image/bmp'
+};
+var maxSteps = 4;
+var scaleFactor = Math.log(2);
+var supportMimeTypes = Object.keys(compress_mimeTypes).map(function (type) { return compress_mimeTypes[type]; });
+var defaultType = compress_mimeTypes.JPEG;
+function isSupportedType(type) {
+    return supportMimeTypes.includes(type);
+}
+var compress_Compress = /** @class */ (function () {
+    function Compress(file, config) {
+        this.file = file;
+        this.config = config;
+        this.config = compress_assign({ quality: 0.92, noCompressIfLarger: false }, this.config);
+    }
+    Compress.prototype.process = function () {
+        return compress_awaiter(this, void 0, void 0, function () {
+            var srcDimension, originImage, canvas, scale, scaleCanvas, distBlob;
+            return compress_generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        this.outputType = this.file.type;
+                        srcDimension = {};
+                        if (!isSupportedType(this.file.type)) {
+                            throw new Error("unsupported file type: " + this.file.type);
+                        }
+                        return [4 /*yield*/, this.getOriginImage()];
+                    case 1:
+                        originImage = _a.sent();
+                        return [4 /*yield*/, this.getCanvas(originImage)];
+                    case 2:
+                        canvas = _a.sent();
+                        scale = 1;
+                        if (this.config.maxWidth) {
+                            scale = Math.min(1, this.config.maxWidth / canvas.width);
+                        }
+                        if (this.config.maxHeight) {
+                            scale = Math.min(1, scale, this.config.maxHeight / canvas.height);
+                        }
+                        srcDimension.width = canvas.width;
+                        srcDimension.height = canvas.height;
+                        return [4 /*yield*/, this.doScale(canvas, scale)];
+                    case 3:
+                        scaleCanvas = _a.sent();
+                        distBlob = this.toBlob(scaleCanvas);
+                        if (distBlob.size > this.file.size && this.config.noCompressIfLarger) {
+                            return [2 /*return*/, {
+                                    dist: this.file,
+                                    width: srcDimension.width,
+                                    height: srcDimension.height
+                                }];
+                        }
+                        return [2 /*return*/, {
+                                dist: distBlob,
+                                width: scaleCanvas.width,
+                                height: scaleCanvas.height
+                            }];
+                }
+            });
+        });
+    };
+    Compress.prototype.clear = function (ctx, width, height) {
+        // jpeg 没有 alpha 通道，透明区间会被填充成黑色，这里把透明区间填充为白色
+        if (this.outputType === defaultType) {
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0, 0, width, height);
+        }
+        else {
+            ctx.clearRect(0, 0, width, height);
+        }
+    };
+    /** 通过 file 初始化 image 对象 */
+    Compress.prototype.getOriginImage = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var url = createObjectURL(_this.file);
+            var img = new Image();
+            img.onload = function () {
+                resolve(img);
+            };
+            img.onerror = function () {
+                reject('image load error');
+            };
+            img.src = url;
+        });
+    };
+    Compress.prototype.getCanvas = function (img) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            // 通过得到图片的信息来调整显示方向以正确显示图片，主要解决 ios 系统上的图片会有旋转的问题
+            exif["EXIF"].getData(img, function () {
+                var orientation = exif["EXIF"].getTag(img, 'Orientation') || 1;
+                var _a = getTransform(img, orientation), width = _a.width, height = _a.height, matrix = _a.matrix;
+                var canvas = document.createElement('canvas');
+                var context = canvas.getContext('2d');
+                canvas.width = width;
+                canvas.height = height;
+                if (!context) {
+                    reject(new Error('context is null'));
+                    return;
+                }
+                _this.clear(context, width, height);
+                context.transform.apply(context, __spread(matrix));
+                context.drawImage(img, 0, 0);
+                resolve(canvas);
+            });
+        });
+    };
+    Compress.prototype.doScale = function (source, scale) {
+        return compress_awaiter(this, void 0, void 0, function () {
+            var sctx, steps, factor, mirror, mctx, width, height, originWidth, originHeight, src, context, i, dw, dh, canvas, data;
+            return compress_generator(this, function (_a) {
+                if (scale === 1) {
+                    return [2 /*return*/, source];
+                }
+                sctx = source.getContext('2d');
+                steps = Math.min(maxSteps, Math.ceil((1 / scale) / scaleFactor));
+                factor = Math.pow(scale, (1 / steps));
+                mirror = document.createElement('canvas');
+                mctx = mirror.getContext('2d');
+                width = source.width, height = source.height;
+                originWidth = width;
+                originHeight = height;
+                mirror.width = width;
+                mirror.height = height;
+                if (!mctx || !sctx) {
+                    throw new Error("mctx or sctx can't be null");
+                }
+                for (i = 0; i < steps; i++) {
+                    dw = width * factor | 0 // eslint-disable-line no-bitwise
+                    ;
+                    dh = height * factor | 0 // eslint-disable-line no-bitwise
+                    ;
+                    // 到最后一步的时候 dw, dh 用目标缩放尺寸，否则会出现最后尺寸偏小的情况
+                    if (i === steps - 1) {
+                        dw = originWidth * scale;
+                        dh = originHeight * scale;
+                    }
+                    if (i % 2 === 0) {
+                        src = source;
+                        context = mctx;
+                    }
+                    else {
+                        src = mirror;
+                        context = sctx;
+                    }
+                    // 每次画前都清空，避免图像重叠
+                    this.clear(context, width, height);
+                    context.drawImage(src, 0, 0, width, height, 0, 0, dw, dh);
+                    width = dw;
+                    height = dh;
+                }
+                canvas = src === source ? mirror : source;
+                data = context.getImageData(0, 0, width, height);
+                // resize
+                canvas.width = width;
+                canvas.height = height;
+                // store image data
+                context.putImageData(data, 0, 0);
+                return [2 /*return*/, canvas];
+            });
+        });
+    };
+    /** 这里把 base64 字符串转为 blob 对象 */
+    Compress.prototype.toBlob = function (result) {
+        var dataURL = result.toDataURL(this.outputType, this.config.quality);
+        var buffer = atob(dataURL.split(',')[1]).split('').map(function (char) { return char.charCodeAt(0); });
+        var blob = new Blob([new Uint8Array(buffer)], { type: this.outputType });
+        return blob;
+    };
+    return Compress;
+}());
+var compressImage = function (file, options) { return new compress_Compress(file, options).process(); };
+/* harmony default export */ var compress = (compressImage);
+//# sourceMappingURL=compress.js.map
+// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/image.js
+
+
+function getImageUrl(key, domain) {
+    key = encodeURIComponent(key);
+    if (domain.slice(domain.length - 1) !== '/') {
+        domain += '/';
+    }
+    return domain + key;
+}
+function imageView2(op, key, domain) {
+    if (!/^\d$/.test(String(op.mode))) {
+        throw 'mode should be number in imageView2';
+    }
+    var mode = op.mode, w = op.w, h = op.h, q = op.q, format = op.format;
+    if (!w && !h) {
+        throw 'param w and h is empty in imageView2';
+    }
+    var imageUrl = 'imageView2/' + encodeURIComponent(mode);
+    imageUrl += w ? '/w/' + encodeURIComponent(w) : '';
+    imageUrl += h ? '/h/' + encodeURIComponent(h) : '';
+    imageUrl += q ? '/q/' + encodeURIComponent(q) : '';
+    imageUrl += format ? '/format/' + encodeURIComponent(format) : '';
+    if (key && domain) {
+        imageUrl = getImageUrl(key, domain) + '?' + imageUrl;
+    }
+    return imageUrl;
+}
+// invoke the imageMogr2 api of Qiniu
+function imageMogr2(op, key, domain) {
+    var autoOrient = op['auto-orient'];
+    var thumbnail = op.thumbnail, strip = op.strip, gravity = op.gravity, crop = op.crop, quality = op.quality, rotate = op.rotate, format = op.format, blur = op.blur;
+    var imageUrl = 'imageMogr2';
+    imageUrl += autoOrient ? '/auto-orient' : '';
+    imageUrl += thumbnail ? '/thumbnail/' + encodeURIComponent(thumbnail) : '';
+    imageUrl += strip ? '/strip' : '';
+    imageUrl += gravity ? '/gravity/' + encodeURIComponent(gravity) : '';
+    imageUrl += quality ? '/quality/' + encodeURIComponent(quality) : '';
+    imageUrl += crop ? '/crop/' + encodeURIComponent(crop) : '';
+    imageUrl += rotate ? '/rotate/' + encodeURIComponent(rotate) : '';
+    imageUrl += format ? '/format/' + encodeURIComponent(format) : '';
+    imageUrl += blur ? '/blur/' + encodeURIComponent(blur) : '';
+    if (key && domain) {
+        imageUrl = getImageUrl(key, domain) + '?' + imageUrl;
+    }
+    return imageUrl;
+}
+// invoke the watermark api of Qiniu
+function watermark(op, key, domain) {
+    var mode = op.mode;
+    if (!mode) {
+        throw "mode can't be empty in watermark";
+    }
+    var imageUrl = 'watermark/' + mode;
+    if (mode !== 1 && mode !== 2) {
+        throw 'mode is wrong';
+    }
+    if (mode === 1) {
+        var image = op.image;
+        if (!image) {
+            throw "image can't be empty in watermark";
+        }
+        imageUrl += image ? '/image/' + urlSafeBase64Encode(image) : '';
+    }
+    if (mode === 2) {
+        var text = op.text, font = op.font, fontsize = op.fontsize, fill = op.fill;
+        if (!text) {
+            throw "text can't be empty in watermark";
+        }
+        imageUrl += text ? '/text/' + urlSafeBase64Encode(text) : '';
+        imageUrl += font ? '/font/' + urlSafeBase64Encode(font) : '';
+        imageUrl += fontsize ? '/fontsize/' + fontsize : '';
+        imageUrl += fill ? '/fill/' + urlSafeBase64Encode(fill) : '';
+    }
+    var dissolve = op.dissolve, gravity = op.gravity, dx = op.dx, dy = op.dy;
+    imageUrl += dissolve ? '/dissolve/' + encodeURIComponent(dissolve) : '';
+    imageUrl += gravity ? '/gravity/' + encodeURIComponent(gravity) : '';
+    imageUrl += dx ? '/dx/' + encodeURIComponent(dx) : '';
+    imageUrl += dy ? '/dy/' + encodeURIComponent(dy) : '';
+    if (key && domain) {
+        imageUrl = getImageUrl(key, domain) + '?' + imageUrl;
+    }
+    return imageUrl;
+}
+// invoke the imageInfo api of Qiniu
+function imageInfo(key, domain) {
+    var url = getImageUrl(key, domain) + '?imageInfo';
+    return request(url, { method: 'GET' });
+}
+// invoke the exif api of Qiniu
+function image_exif(key, domain) {
+    var url = getImageUrl(key, domain) + '?exif';
+    return request(url, { method: 'GET' });
+}
+function pipeline(arr, key, domain) {
+    var isArray = Object.prototype.toString.call(arr) === '[object Array]';
+    var option;
+    var errOp = false;
+    var imageUrl = '';
+    if (isArray) {
+        for (var i = 0, len = arr.length; i < len; i++) {
+            option = arr[i];
+            if (!option.fop) {
+                throw "fop can't be empty in pipeline";
+            }
+            switch (option.fop) {
+                case 'watermark':
+                    imageUrl += watermark(option) + '|';
+                    break;
+                case 'imageView2':
+                    imageUrl += imageView2(option) + '|';
+                    break;
+                case 'imageMogr2':
+                    imageUrl += imageMogr2(option) + '|';
+                    break;
+                default:
+                    errOp = true;
+                    break;
+            }
+            if (errOp) {
+                throw 'fop is wrong in pipeline';
+            }
+        }
+        if (key && domain) {
+            imageUrl = getImageUrl(key, domain) + '?' + imageUrl;
+            var length_1 = imageUrl.length;
+            if (imageUrl.slice(length_1 - 1) === '|') {
+                imageUrl = imageUrl.slice(0, length_1 - 1);
+            }
+        }
+        return imageUrl;
+    }
+    throw "pipeline's first param should be array";
+}
+//# sourceMappingURL=image.js.map
+// CONCATENATED MODULE: ./node_modules/qiniu-js/esm/index.js
+
+
+
+
+var esm_statisticsLogger = new statisticsLog();
+/**
+ * @param file 上传文件
+ * @param key 目标文件名
+ * @param token 上传凭证
+ * @param putExtra 上传文件的相关资源信息配置
+ * @param config 上传任务的配置
+ * @returns 返回用于上传任务的可观察对象
+ */
+function upload(file, key, token, putExtra, config) {
+    var options = {
+        file: file,
+        key: key,
+        token: token,
+        putExtra: putExtra,
+        config: config
+    };
+    return new Observable(function (observer) {
+        var manager = createUploadManager(options, {
+            onData: function (data) { return observer.next(data); },
+            onError: function (err) { return observer.error(err); },
+            onComplete: function (res) { return observer.complete(res); }
+        }, esm_statisticsLogger);
+        manager.putFile();
+        return manager.stop.bind(manager);
+    });
+}
+
+
+
+
+
+
+//# sourceMappingURL=index.js.map
+// EXTERNAL MODULE: ./node_modules/random-string/lib/random-string.js
+var random_string = __webpack_require__("e875");
+var random_string_default = /*#__PURE__*/__webpack_require__.n(random_string);
+
+// CONCATENATED MODULE: ./src/util/utils.js
+
+
+const isImage = file => {
+  return file.type && file.type.includes('image/');
+};
+const utils_upload = (file, token, qiniuDomain, imgStyle) => {
+  return new Promise((resolve, reject) => {
+    compress(file, {
+      quality: 0.9,
+      noCompressIfLarger: true,
+      maxWidth: 750
+    }).then(data => {
+      // console.log(data)
+      const type = file.name.split('.').pop();
+      const randomHash = random_string_default()({
+        length: 20
+      }); // console.log(randomHash)
+
+      const key = randomHash + '.' + type;
+      const observable = upload(data.dist, key, token);
+      observable.subscribe({
+        complete(res) {
+          // console.log(res)
+          const url = imgStyle ? qiniuDomain + res.key + imgStyle : qiniuDomain + res.key;
+          resolve(url);
+        },
+
+        error(err) {
+          reject(err);
+        }
+
+      });
+    });
+  });
+};
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Editor.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+
+ // import 'highlight.js/styles/atom-one-dark.css'
+
+
+/* harmony default export */ var Editorvue_type_script_lang_js_ = ({
+  model: {
+    event: 'changeHtmlInfo',
+    prop: 'initInfo'
+  },
+  props: {
+    initInfo: {
+      type: String
+    },
+    domain: {
+      type: String,
+      required: true
+    },
+    customStyle: {
+      default: ''
+    }
+  },
+
+  created() {
+    this.info = this.initInfo;
+  },
+
+  data() {
+    return {
+      info: '',
+      token: ''
+    };
+  },
+
+  methods: {
+    setToken(token) {
+      this.token = token;
+    },
+
+    dragFile(ev) {
+      if (!this.token) {
+        // 没有token直接返回
+        console.log('没有实现七牛云上传token');
+        return;
+      }
+
+      const myField = this.$refs.textarea;
+      const start = myField.selectionStart; // console.log(myField.value)
+
+      const files = ev.dataTransfer.files; // const token = await getToken()
+      // const token = 'YOXpF0XvM_3yVDsz5C-hWwrFE5rtDAUQC3XjBQEG:QLjFeRD-YQifnHf0aRVlFJcIjPw=:eyJzY29wZSI6ImRvYy1hcnRpY2xlLWltYWdlIiwiZGVhZGxpbmUiOjE1OTcxMzQyNjB9'
+      // 判断是否是图片
+
+      files.forEach((file, index) => {
+        if (isImage(file, index)) {
+          utils_upload(file, this.token, this.domain).then(url => {
+            const imgStr = `![${file.name}](${url})\n`;
+            myField.value = myField.value.substring(0, start) + imgStr + myField.value.substring(start, myField.value.length);
+            this.info = myField.value; // console.log(this.info)
+
+            this.changeInfo(); // myField.focus()
+            // this.changeInfo()
+          });
+        } else {
+          console.log('只能上传图片，自动忽略非图片文件');
+        }
+      });
+    },
+
+    changeInfo() {
+      // console.log('change')
+      const htmlInfo = marked_default()(this.info);
+      this.$emit('changeHtmlInfo', htmlInfo);
+    }
+
+  },
+
+  mounted() {
+    marked_default.a.setOptions({
+      renderer: new marked_default.a.Renderer(),
+      highlight: function (code) {
+        return lib_default.a.highlightAuto(code).value;
+      },
+      pedantic: false,
+      gfm: true,
+      tables: true,
+      breaks: false,
+      sanitize: false,
+      smartLists: true,
+      smartypants: false,
+      xhtml: false
+    });
+    this.$emit('getToken');
+    this.time = setInterval(() => {
+      this.$emit('getToken');
+    }, 120000);
+  },
+
+  beforeDestroy() {
+    this.time && clearInterval(this.time);
+  }
+
+});
+// CONCATENATED MODULE: ./src/components/Editor.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_Editorvue_type_script_lang_js_ = (Editorvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () {
+        injectStyles.call(
+          this,
+          (options.functional ? this.parent : this).$root.$options.shadowRoot
+        )
+      }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functional component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+// CONCATENATED MODULE: ./src/components/Editor.vue
+
+
+
+function injectStyles (context) {
+  
+  var style0 = __webpack_require__("73f3")
+if (style0.__inject__) style0.__inject__(context)
+
+}
+
+/* normalize component */
+
+var component = normalizeComponent(
+  components_Editorvue_type_script_lang_js_,
+  Editorvue_type_template_id_89218b56_scoped_true_render,
+  Editorvue_type_template_id_89218b56_scoped_true_staticRenderFns,
+  false,
+  injectStyles,
+  "89218b56",
+  null
+  ,true
+)
+
+/* harmony default export */ var Editor = (component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/App.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var Appvue_type_script_lang_js_ = ({
+  name: 'App',
+  props: {
+    theme: {
+      type: String,
+      default: function _default() {
+        return 'light';
+      }
+    },
+    domain: {
+      type: String,
+      required: true
+    },
+    customStyle: {
+      default: ''
+    }
+  },
+  components: {
+    Editor: Editor
+  },
+  data: function data() {
+    return {
+      info: '',
+      htmlInfo: ''
+    };
+  },
+  methods: {
+    getToken: function getToken() {
+      this.$emit('getUploadToken');
+    },
+    setToken: function setToken(token) {
+      this.$refs.myqiniuEditorOldDeepComponent.setToken(token);
+    }
+  }
+});
+// CONCATENATED MODULE: ./src/App.vue?vue&type=script&lang=js&
+ /* harmony default export */ var src_Appvue_type_script_lang_js_ = (Appvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/App.vue?vue&type=style&index=0&lang=less&
+var Appvue_type_style_index_0_lang_less_ = __webpack_require__("7c55");
+
+// CONCATENATED MODULE: ./src/App.vue
+
+
+
+
+
+
+/* normalize component */
+
+var App_component = normalizeComponent(
+  src_Appvue_type_script_lang_js_,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var App = (App_component.exports);
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
+
+
+/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (App);
+
+
+
 /***/ })
 
-/******/ });
-//# sourceMappingURL=md-editor.js.map
+/******/ })["default"];
+//# sourceMappingURL=mdEditor.common.js.map
