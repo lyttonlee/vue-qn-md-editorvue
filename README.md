@@ -4,7 +4,11 @@
 
 ## 安装
 ```
-yarn install vue-qn-md-editor -S
+npm install vue-qn-md-editor -S
+
+or
+
+yarn add vue-qn-md-editor -S
 ```
 
 ## api
