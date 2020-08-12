@@ -4,8 +4,6 @@
   </div>
 </template>
 <script>
-import marked from 'marked'
-import hljs from 'highlight.js'
 // import 'highlight.js/styles/atom-one-dark.css'
 import {
   isImage,
@@ -28,17 +26,18 @@ export default {
       default: ''
     }
   },
-  created () {
-    this.info = this.initInfo
-  },
   data () {
     return {
-      info: '',
+      info: this.initInfo || '',
       token: ''
     }
   },
   methods: {
     setToken (token) {
+      if (!token) {
+        console.log('没有token')
+        return
+      }
       this.token = token
     },
     dragFile (ev) {
@@ -53,10 +52,13 @@ export default {
       // const token = await getToken()
       // const token = 'YOXpF0XvM_3yVDsz5C-hWwrFE5rtDAUQC3XjBQEG:QLjFeRD-YQifnHf0aRVlFJcIjPw=:eyJzY29wZSI6ImRvYy1hcnRpY2xlLWltYWdlIiwiZGVhZGxpbmUiOjE1OTcxMzQyNjB9'
       // 判断是否是图片
-      files.forEach((file, index) => {
-        if (isImage(file, index)) {
-          upload(file, this.token, this.domain).then((url) => {
-            const imgStr = `![${file.name}](${url})\n`
+      // console.log(files)
+      // console.log(files instanceof Array)
+      // FileList 不要使用 foreach 去迭代
+      for (let i = 0; i < files.length; i++) {
+        if (isImage(files[i])) {
+          upload(files[i], this.token, this.domain).then((url) => {
+            const imgStr = `![${files[i].name}](${url})\n`
             myField.value = myField.value.substring(0, start) + imgStr + myField.value.substring(start, myField.value.length)
             this.info = myField.value
             // console.log(this.info)
@@ -67,29 +69,15 @@ export default {
         } else {
           console.log('只能上传图片，自动忽略非图片文件')
         }
-      })
+      }
     },
     changeInfo () {
       // console.log('change')
-      const htmlInfo = marked(this.info)
-      this.$emit('changeHtmlInfo', htmlInfo)
+      this.$emit('changeHtmlInfo', this.info)
     }
   },
   mounted () {
-    marked.setOptions({
-      renderer: new marked.Renderer(),
-      highlight: function (code) {
-        return hljs.highlightAuto(code).value
-      },
-      pedantic: false,
-      gfm: true,
-      tables: true,
-      breaks: false,
-      sanitize: false,
-      smartLists: true,
-      smartypants: false,
-      xhtml: false
-    })
+    // this.info = this.initInfo
     this.$emit('getToken')
     this.time = setInterval(() => {
       this.$emit('getToken')
@@ -104,6 +92,7 @@ export default {
 @import '../assets/css/atom-one-dark.css';
 .editor-content {
   width: 100%;
+  margin: 0 auto;
   .area {
     padding: 20px;
     margin: 0 auto;
@@ -118,8 +107,9 @@ export default {
     resize: none;
     box-sizing: border-box;
     border: none;
-    background: rgb(51, 50, 50);
-    color: rgb(155, 157, 158);
+    border-right: .5px solid rgb(83, 83, 83);
+    // background: rgb(51, 50, 50);
+    // color: rgb(155, 157, 158);
     outline: none;
     font-size: 16px;
   }
