@@ -8,8 +8,8 @@ export const upload = (file, token, qiniuDomain, imgStyle) => {
   return new Promise((resolve, reject) => {
     qiniu.compressImage(file, {
       quality: 0.9,
-      noCompressIfLarger: true,
-      maxWidth: 750
+      noCompressIfLarger: true
+      // maxWidth: 750
     }).then((data) => {
       // console.log(data)
       const type = file.name.split('.').pop()

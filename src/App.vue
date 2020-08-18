@@ -106,6 +106,7 @@ export default {
     padding: 10px;
     box-sizing: border-box;
     margin: 0 auto;
+    text-align: left;
   }
 }
 </style>
